@@ -1,2 +1,6 @@
 # oHash
-An iPhone / iPad app for finding Geohashing hashpoints
+An iPhone / iPad app for finding [Geohashing](https://geohashing.site/) hashpoints
+
+This app is a work in progress. Join the conversation at 
+[the wiki page](https://geohashing.site/geohashing/User_talk:BrendanTWhite) 
+or in the [Discord channel](https://discord.com/channels/742785009202626640/1200076111191752858).
