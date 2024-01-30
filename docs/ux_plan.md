@@ -1,5 +1,9 @@
 # UX Brainstorming
 
+## Mockup Image
+
+![Screen mockup with small Dates section at the top, large Map section in the middle, and meduim sized Graticule Info section at the bottom](images/napkin-mockup.png)
+
 ## Dates
 
 - Default to 'today'
