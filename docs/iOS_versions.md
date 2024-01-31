@@ -22,4 +22,7 @@ So from a "what do users use" viewpoint, we probs want to support 16 as well as 
 
 ## What versions give better functionality?
 
-// TODO - work this out
+No idea. My plan is to start by supporting all the way back to iOS 15,
+and see if that blocks me from using anything cool.
+
+I can always change it to support only 16+ (or even 17+)  if I have to.
