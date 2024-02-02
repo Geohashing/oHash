@@ -22,13 +22,6 @@ in late Jan 2024 reported one 16.3.1 (iPhone 8 so can't go higher), one 16.7.4 (
 
 So from a "what do users use" viewpoint, we probs want to support 16 as well as 17. Going back to 15 or even 14 would be lovely, but only if it's no extra effort.
 
-## What versions give better functionality?
-
-No idea. My plan is to start by supporting all the way back to iOS 14,
-and see if that blocks me from using anything cool.
-
-I can always change it to support only 15+, 16+, or even 17+ later on, if I have to.
-
 ## What functionality would be better in iOS 15, 16, or 17?
 
 ### Persistance
@@ -64,7 +57,8 @@ So if I'm not going to inisist on iOS 17, I might as well support all the way ba
 But. This is a small project, written by one person, who has a day job and a family and other committments besides. So much as I'd like to,
 I simply can't spend the amount of time on oHash that it'd take to do all that I'd like it to do.
 
-And done is better than perfect. And if I make this project too big, it will never be done.
+And done is better than perfect. And if I make this project too big, it will never be done. And the new iOS 17 functionality
+will make the app a lot quicker and simpler to build.
 
 So I'm going to just target iOS 17 in the first instance, until the app is actually working. After that,
 I can always go back and spend the time to make it compatable with iOS 15 & 16.
