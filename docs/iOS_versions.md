@@ -8,7 +8,7 @@ But of course not all users are on 17 yet.
 As of the end of November 2023,
 [TelemetryDeck](https://telemetrydeck.com/blog/ios-market-share-13-23/) says iOS 17 only gives 63.2% of users, 16+ gives 96.2%, 15+ gives 99.9%, and 14+ gives 99.96%. 
 By the end of January 2024, [the same website](https://telemetrydeck.com/blog/ios-market-share-02-24/) said 
-it's 78.8% iOS 17, 96.8% iOS 16+, and 99.9% 15%.
+it's 78.8% iOS 17, 96.8% iOS 16+, and 99.9% 15+.
 
 The [official Apple page](https://developer.apple.com/support/app-store/)
 was last updated in May 2023, so is pretty much useless.
