@@ -56,3 +56,16 @@ All these things would be a bit cleaner and simpler if I only support
 iOS 17+. But that cuts out a good number of potential users.
 
 So if I'm not going to inisist on iOS 17, I might as well support all the way back to 14. There's nothing cool that I want to use that was new in 15 or 16.
+
+## And yet...
+
+But. This is a small project, written by one person, who has a day job and a family and other committments besides. So much as I'd like to,
+I simply can't spend the amount of time on oHash that it'd take to do all that I'd like it to do.
+
+And done is better than perfect. And if I make this project too big, it will never be done.
+
+So I'm going to just target iOS 17 in the first instance, until the app is actually working. After that,
+I can always go back and spend the time to make it compatable with iOS 15 & 16.
+
+If you're keen to see this app support iOS 15 or 16, *and* you're an experienced iOS developer with spare time to donate,
+then please contact me and I'll immediately reverse this decision. Until then, it's going to have to be iOS 17+ for now.
