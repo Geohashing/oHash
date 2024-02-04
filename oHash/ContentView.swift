@@ -34,8 +34,8 @@ struct ContentView: View {
 
                 Spacer()
                 Button(
-                    action: {print("clicked calendar icon") },
-                    label: {Image(systemName: "calendar")}
+                    action: {print("clicked bell icon") },
+                    label: {Image(systemName: "bell")}
                 )
 
             }
