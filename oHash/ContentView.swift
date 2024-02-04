@@ -25,7 +25,9 @@ struct ContentView: View {
                     label: {Image(systemName: "arrowshape.left")}
                 )
 
-                Text("today")
+                Button("today"){
+                    print("clicked date text")
+                }
                 
                 Button(
                     action: {print("clicked arrowshape.right icon") },
