@@ -25,7 +25,7 @@ struct ContentView: View {
                     label: {Image(systemName: "arrowshape.left")}
                 )
 
-                Text("Today")
+                Text("today")
                 
                 Button(
                     action: {print("clicked arrowshape.right icon") },
@@ -43,7 +43,7 @@ struct ContentView: View {
 
             Map()
 
-            Text("Graticule Info Section")
+            Text("grat info")
                 .padding(50)
             
 
