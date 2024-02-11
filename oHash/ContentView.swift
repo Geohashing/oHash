@@ -9,48 +9,54 @@ import SwiftUI
 import MapKit
 
 struct ContentView: View {
+    
+    @State private var blah = "blah blah blah"
+    
     var body: some View {
-        VStack {
-
-            HStack{
+        NavigationStack {
+            
+            VStack {
                 
-                Button(
-                    action: {print("clicked gearshape icon") },
-                    label: {Image(systemName: "gearshape")}
-                )
-                Spacer()
+                Map()
                 
-                Button(
-                    action: {print("clicked arrowshape.left icon") },
-                    label: {Image(systemName: "arrowshape.left")}
-                )
-
-                Button("today"){
-                    print("clicked date text")
+                Text(blah)
+                    .padding(50)
+                
+            }
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbarRole(.browser)
+            .toolbar {
+                
+                ToolbarItem(placement: .topBarLeading) {
+                    Button(
+                        action: {blah = "clicked gearshape icon" },
+                        label: {Image(systemName: "gearshape")}
+                    )
                 }
                 
-                Button(
-                    action: {print("clicked arrowshape.right icon") },
-                    label: {Image(systemName: "arrowshape.right")}
-                )
-
-                Spacer()
-                Button(
-                    action: {print("clicked bell icon") },
-                    label: {Image(systemName: "bell")}
-                )
-
+                ToolbarItem(placement: .principal) {
+                    Button("today") {
+                        print("today tapped!")
+                        blah = "clicked date"
+                    }
+                }
+                
+                ToolbarItem(placement: .topBarTrailing) {
+                    Button(
+                        action: {blah = "clicked bell icon" },
+                        label: {Image(systemName: "bell")}
+                    )
+                    
+                }
+                
+                
+                
+                
+                
             }
-            .padding([.leading,.trailing], 20)
-
-            Map()
-
-            Text("grat info")
-                .padding(50)
-            
-
         }
     }
+        
 }
 
 #Preview {
