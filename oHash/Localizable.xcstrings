@@ -2,6 +2,7 @@
   "sourceLanguage" : "en",
   "strings" : {
     "grat info" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -11,7 +12,14 @@
         }
       }
     },
+    "One" : {
+
+    },
+    "Three" : {
+
+    },
     "today" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -20,6 +28,12 @@
           }
         }
       }
+    },
+    "Two" : {
+
+    },
+    "What date do you want to check?" : {
+
     }
   },
   "version" : "1.0"

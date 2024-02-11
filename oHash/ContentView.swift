@@ -105,12 +105,36 @@ struct ContentView: View {
                     
                 }
                 
-                
-                
-                
+                ToolbarItemGroup(placement: .bottomBar) {
+                    
+                    Button(
+                        action: {blah = "clicked a.square" },
+                        label: {Image(systemName: "a.square")}
+                    )
+                    Spacer()
+                    Button(
+                        action: {blah = "clicked b.square" },
+                        label: {Image(systemName: "b.square")}
+                    )
+                    Spacer()
+                    Button(
+                        action: {blah = "clicked c.square" },
+                        label: {Image(systemName: "c.square")}
+                    )
+                    Spacer()
+                    Button(
+                        action: {blah = "clicked d.square" },
+                        label: {Image(systemName: "d.square")}
+                    ).disabled(/*@START_MENU_TOKEN@*/true/*@END_MENU_TOKEN@*/)
+                    Spacer()
+                    Button(
+                        action: {blah = "clicked e.square" },
+                        label: {Image(systemName: "e.square")}
+                    )
+                                        
+                }
                 
             }
-            
         }
     }
         
