@@ -10,18 +10,34 @@ import MapKit
 
 struct ContentView: View {
     
-    @State private var date = Date.now
-    @State private var blah = "no action yet"
+    @State private var hashDate = Date.now
+    @State private var tapText = "no buttons tapped yet"
+    @State private var mapRegion = MKCoordinateRegion.init()
+
     
     var body: some View {
         NavigationStack {
             
             VStack {
                 Map()
+                    .onMapCameraChange { mapCameraUpdateContext in
+                        mapRegion = mapCameraUpdateContext.region
+                               }
                 VStack{
-                    Text(blah)
-                    Text(date, style: .date)
-                }.padding(50)
+                    Text(
+                        mapRegion.center.latitude.formatted(.number.precision(.fractionLength(2)))
+                    + ", " +
+                        mapRegion.center.longitude.formatted(.number.precision(.fractionLength(2)))
+                    )
+                    
+                    Text(
+                        mapRegion.span.latitudeDelta.formatted(.number.precision(.fractionLength(6)))
+                    + ", " +
+                        mapRegion.span.longitudeDelta.formatted(.number.precision(.fractionLength(6)))
+                    )
+                    Text(tapText)
+                    Text(hashDate, style: .date)
+                }.padding(20)
             }
             
             .navigationBarTitleDisplayMode(.inline)
@@ -32,7 +48,7 @@ struct ContentView: View {
                     Menu(content: {
                         
                         Button(
-                            action: {blah = "clicked 1.circle" },
+                            action: {tapText = "tapped 1.circle" },
                             label: {
                                 Image(systemName: "1.circle")
                                 Text("One")
@@ -40,7 +56,7 @@ struct ContentView: View {
                         )
                         
                         Button(
-                            action: {blah = "clicked 2.circle" },
+                            action: {tapText = "tapped 2.circle" },
                             label: {
                                 Image(systemName: "2.circle")
                                 Text("Two")
@@ -48,7 +64,7 @@ struct ContentView: View {
                         )
                         
                         Button(
-                            action: {blah = "clicked 3.circle" },
+                            action: {tapText = "tapped 3.circle" },
                             label: {
                                 Image(systemName: "3.circle")
                                 Text("Three")
@@ -62,13 +78,13 @@ struct ContentView: View {
                 }
                 
                 ToolbarItem(placement: .principal) {
-                    
+                                        
                     DatePicker(
                         "What date do you want to check?",
-                        selection: $date,
+                        selection: $hashDate,
                         displayedComponents: .date
                     ).labelsHidden()
-                    
+                                        
                 }
 
                 ToolbarItem(placement: .topBarTrailing) {
@@ -76,7 +92,7 @@ struct ContentView: View {
                     Menu(content: {
                         
                         Button(
-                            action: {blah = "clicked 1.square" },
+                            action: {tapText = "tapped 1.square" },
                             label: {
                                 Image(systemName: "1.square")
                                 Text("One")
@@ -84,7 +100,7 @@ struct ContentView: View {
                         )
                         
                         Button(
-                            action: {blah = "clicked 2.square" },
+                            action: {tapText = "tapped 2.square" },
                             label: {
                                 Image(systemName: "2.square")
                                 Text("Two")
@@ -92,7 +108,7 @@ struct ContentView: View {
                         )
                         
                         Button(
-                            action: {blah = "clicked 3.square" },
+                            action: {tapText = "tapped 3.square" },
                             label: {
                                 Image(systemName: "3.square")
                                 Text("Three")
@@ -108,27 +124,27 @@ struct ContentView: View {
                 ToolbarItemGroup(placement: .bottomBar) {
                     
                     Button(
-                        action: {blah = "clicked a.square" },
+                        action: {tapText = "tapped a.square" },
                         label: {Image(systemName: "a.square")}
                     )
                     Spacer()
                     Button(
-                        action: {blah = "clicked b.square" },
+                        action: {tapText = "tapped b.square" },
                         label: {Image(systemName: "b.square")}
                     )
                     Spacer()
                     Button(
-                        action: {blah = "clicked c.square" },
+                        action: {tapText = "tapped c.square" },
                         label: {Image(systemName: "c.square")}
                     )
                     Spacer()
                     Button(
-                        action: {blah = "clicked d.square" },
+                        action: {tapText = "tapped d.square" },
                         label: {Image(systemName: "d.square")}
                     ).disabled(/*@START_MENU_TOKEN@*/true/*@END_MENU_TOKEN@*/)
                     Spacer()
                     Button(
-                        action: {blah = "clicked e.square" },
+                        action: {tapText = "tapped e.square" },
                         label: {Image(systemName: "e.square")}
                     )
                                         
