@@ -12,6 +12,7 @@ struct ContentView: View {
     
     @State private var hashDate = Date.now
     @State private var tapText = "no buttons tapped yet"
+    @State private var tapPoint = CLLocationCoordinate2D.init()
     @State private var mapRegion = MKCoordinateRegion.init()
 
     
@@ -19,23 +20,35 @@ struct ContentView: View {
         NavigationStack {
             
             VStack {
-                Map()
-                    .onMapCameraChange { mapCameraUpdateContext in
-                        mapRegion = mapCameraUpdateContext.region
-                               }
+                MapReader { proxy in
+                    Map()
+                        .onTapGesture {
+                            position in
+                            tapText = "map tap"
+                            tapPoint = proxy.convert(position, from: .local) ??  CLLocationCoordinate2D.init()
+                        }
+                        .onMapCameraChange { mapCameraUpdateContext in
+                            mapRegion = mapCameraUpdateContext.region
+                        }
+                }
                 VStack{
                     Text(
                         mapRegion.center.latitude.formatted(.number.precision(.fractionLength(2)))
-                    + ", " +
+                        + ", " +
                         mapRegion.center.longitude.formatted(.number.precision(.fractionLength(2)))
                     )
                     
                     Text(
                         mapRegion.span.latitudeDelta.formatted(.number.precision(.fractionLength(6)))
-                    + ", " +
+                        + ", " +
                         mapRegion.span.longitudeDelta.formatted(.number.precision(.fractionLength(6)))
                     )
                     Text(tapText)
+                    Text(
+                        tapPoint.latitude.formatted(.number.precision(.fractionLength(2)))
+                        + ", " +
+                        tapPoint.longitude.formatted(.number.precision(.fractionLength(2)))
+                    )
                     Text(hashDate, style: .date)
                 }.padding(20)
             }
