@@ -14,6 +14,43 @@ struct ContentView: View {
     @State private var tapText = "no buttons tapped yet"
     @State private var tapPoint = CLLocationCoordinate2D.init()
     @State private var mapRegion = MKCoordinateRegion.init()
+    
+    var one = [
+        CLLocationCoordinate2D(
+                latitude: -90, longitude: 0
+            ),
+        CLLocationCoordinate2D(
+                latitude: 90, longitude: 0
+            )
+    
+    ]
+    var two = [
+        CLLocationCoordinate2D(
+                latitude: -90, longitude: 10
+            ),
+        CLLocationCoordinate2D(
+                latitude: 90, longitude: 10
+            )
+    
+    ]
+    var three = [
+        CLLocationCoordinate2D(
+                latitude: -90, longitude: 20
+            ),
+        CLLocationCoordinate2D(
+                latitude: 90, longitude: 20
+            )
+    
+    ]
+    var four = [
+        CLLocationCoordinate2D(
+                latitude: -90, longitude: 30
+            ),
+        CLLocationCoordinate2D(
+                latitude: 90, longitude: 30
+            )
+    
+    ]
 
     
     var body: some View {
@@ -21,7 +58,52 @@ struct ContentView: View {
             
             VStack {
                 MapReader { proxy in
-                    Map()
+                    Map(){
+                        
+                        ForEach(-18..<18) { number in
+                            MapPolyline(coordinates:[
+                                CLLocationCoordinate2D(
+                                    latitude: -90, longitude: CLLocationDegrees(number*10)
+                                ),
+                                CLLocationCoordinate2D(
+                                    latitude: 90, longitude: CLLocationDegrees(number*10)
+                                )
+                            ])
+                            .stroke(Color.accentColor)
+                        }
+                        
+                        
+                        ForEach(-90..<90) { number in
+                            MapPolyline(coordinates:[
+                                CLLocationCoordinate2D(
+                                    latitude: CLLocationDegrees(number*10), longitude: 180
+                                ),
+                                CLLocationCoordinate2D(
+                                    latitude: CLLocationDegrees(number*10), longitude: 0
+                                )
+                            ])
+                            .stroke(Color.accentColor)
+                            
+                        }
+                        
+                        
+                        ForEach(-90..<90) { number in
+                            MapPolyline(coordinates:[
+                                CLLocationCoordinate2D(
+                                    latitude: CLLocationDegrees(number*10), longitude: -180
+                                ),
+                                CLLocationCoordinate2D(
+                                    latitude: CLLocationDegrees(number*10), longitude: 0
+                                )
+                            ])
+                            .stroke(Color.accentColor)
+                            
+                        }
+                        
+                        
+                        
+                        
+                    }
                         .onTapGesture {
                             position in
                             tapText = "map tap"
