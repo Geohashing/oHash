@@ -16,12 +16,66 @@ struct ContentView: View {
     @State private var mapRegion = MKCoordinateRegion.init()
 
     
+    let position = MapCameraPosition.region(
+        MKCoordinateRegion(
+            center: CLLocationCoordinate2D(latitude: 51.507222, longitude: -0.1275),
+            span: MKCoordinateSpan(latitudeDelta: 15, longitudeDelta: 15)
+        )
+    )
+
+    
     var body: some View {
         NavigationStack {
             
             VStack {
                 MapReader { proxy in
-                    Map()
+                    Map(initialPosition:position){
+                    
+                        ForEach(-180..<180) { number in
+                            MapPolyline(coordinates:[
+                                CLLocationCoordinate2D(
+                                    latitude: -90, longitude: CLLocationDegrees(number)
+                                ),
+                                CLLocationCoordinate2D(
+                                    latitude: 90, longitude: CLLocationDegrees(number)
+                                )
+                            ])
+                            .stroke(Color.accentColor)
+                            
+                        }
+                        
+                        
+                        
+                        
+                        ForEach(-90..<90) { number in
+                            
+                            MapPolyline(coordinates:[
+                                CLLocationCoordinate2D(
+                                    latitude: CLLocationDegrees(number), longitude: 180
+                                ),
+                                CLLocationCoordinate2D(
+                                    latitude: CLLocationDegrees(number), longitude: 0
+                                )
+                            ])
+                                                        .stroke(Color.primary)
+
+                            MapPolyline(coordinates:[
+                                CLLocationCoordinate2D(
+                                    latitude: CLLocationDegrees(number), longitude: -180
+                                ),
+                                CLLocationCoordinate2D(
+                                    latitude: CLLocationDegrees(number), longitude: 0
+                                )
+                            ])
+                                                        .stroke(Color.clear)
+
+                        }
+                        
+                        
+                        
+                        
+                    }
+                    
                         .onTapGesture {
                             position in
                             tapText = "map tap"
@@ -170,5 +224,5 @@ struct ContentView: View {
 }
 
 #Preview {
-    ContentView()
+    ContentView().previewInterfaceOrientation(.landscapeLeft)
 }
