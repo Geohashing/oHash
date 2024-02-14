@@ -15,6 +15,7 @@
 		412507002B6F232F00055D7E /* oHashUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 412506FF2B6F232F00055D7E /* oHashUITests.swift */; };
 		412507022B6F232F00055D7E /* oHashUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 412507012B6F232F00055D7E /* oHashUITestsLaunchTests.swift */; };
 		4125070F2B6F355600055D7E /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 4125070E2B6F355600055D7E /* Localizable.xcstrings */; };
+		4192FFB42B7C2237002A6C3C /* Map.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4192FFB32B7C2237002A6C3C /* Map.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,6 +47,7 @@
 		412506FF2B6F232F00055D7E /* oHashUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = oHashUITests.swift; sourceTree = "<group>"; };
 		412507012B6F232F00055D7E /* oHashUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = oHashUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		4125070E2B6F355600055D7E /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
+		4192FFB32B7C2237002A6C3C /* Map.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Map.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,6 +98,7 @@
 		412506E32B6F232E00055D7E /* oHash */ = {
 			isa = PBXGroup;
 			children = (
+				4192FFB22B7C221A002A6C3C /* Types */,
 				412506E42B6F232E00055D7E /* oHashApp.swift */,
 				412506E62B6F232E00055D7E /* ContentView.swift */,
 				4125070E2B6F355600055D7E /* Localizable.xcstrings */,
@@ -128,6 +131,14 @@
 				412507012B6F232F00055D7E /* oHashUITestsLaunchTests.swift */,
 			);
 			path = oHashUITests;
+			sourceTree = "<group>";
+		};
+		4192FFB22B7C221A002A6C3C /* Types */ = {
+			isa = PBXGroup;
+			children = (
+				4192FFB32B7C2237002A6C3C /* Map.swift */,
+			);
+			path = Types;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -262,6 +273,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				412506E72B6F232E00055D7E /* ContentView.swift in Sources */,
+				4192FFB42B7C2237002A6C3C /* Map.swift in Sources */,
 				412506E52B6F232E00055D7E /* oHashApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
