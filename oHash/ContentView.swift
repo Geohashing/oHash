@@ -29,59 +29,19 @@ struct ContentView: View {
             
             VStack {
                 MapReader { proxy in
-                    Map(initialPosition:position){
-                    
-                        ForEach(-180..<180) { number in
-                            MapPolyline(coordinates:[
-                                CLLocationCoordinate2D(
-                                    latitude: -90, longitude: CLLocationDegrees(number)
-                                ),
-                                CLLocationCoordinate2D(
-                                    latitude: 90, longitude: CLLocationDegrees(number)
-                                )
-                            ])
-                            .stroke(Color.accentColor)
-                            
-                        }
-                        
-                        
-                        
-                        
-                        ForEach(-90..<90) { number in
-                            
-                            MapPolyline(coordinates:[
-                                CLLocationCoordinate2D(
-                                    latitude: CLLocationDegrees(number), longitude: 180
-                                ),
-                                CLLocationCoordinate2D(
-                                    latitude: CLLocationDegrees(number), longitude: 0
-                                )
-                            ])
-                                                        .stroke(Color.primary)
-
-                            MapPolyline(coordinates:[
-                                CLLocationCoordinate2D(
-                                    latitude: CLLocationDegrees(number), longitude: -180
-                                ),
-                                CLLocationCoordinate2D(
-                                    latitude: CLLocationDegrees(number), longitude: 0
-                                )
-                            ])
-                                                        .stroke(Color.clear)
-
-                        }
-                        
-                        
-                        
-                        
+                    Map(
+//            TODO  remove this            initialPosition:position
+                    ){
+                        OhGrid.latLongLines(
+                            latitudeDelta:mapRegion.span.latitudeDelta, longitudeDelta:mapRegion.span.longitudeDelta
+                        )
                     }
-                    
                         .onTapGesture {
                             position in
                             tapText = "map tap"
                             tapPoint = proxy.convert(position, from: .local) ??  CLLocationCoordinate2D.init()
                         }
-                        .onMapCameraChange { mapCameraUpdateContext in
+                        .onMapCameraChange(frequency: .continuous) { mapCameraUpdateContext in
                             mapRegion = mapCameraUpdateContext.region
                         }
                 }
