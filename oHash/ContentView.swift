@@ -43,22 +43,13 @@ struct ContentView: View {
                         }
                 }
                 VStack{
-                    Text(
-                        mapRegion.center.latitude.formatted(.number.precision(.fractionLength(2)))
-                        + ", " +
-                        mapRegion.center.longitude.formatted(.number.precision(.fractionLength(2)))
+                    Text( "Centre: \(mapRegion.center.latitude.formatted(.number.precision(.fractionLength(2)))), \(mapRegion.center.longitude.formatted(.number.precision(.fractionLength(2))))."
                     )
                     
-                    Text(
-                        mapRegion.span.latitudeDelta.formatted(.number.precision(.fractionLength(6)))
-                        + ", " +
-                        mapRegion.span.longitudeDelta.formatted(.number.precision(.fractionLength(6)))
+                    Text( "Span: \(mapRegion.span.latitudeDelta.formatted(.number.precision(.fractionLength(6)))), \(mapRegion.span.longitudeDelta.formatted(.number.precision(.fractionLength(6))))."
                     )
                     Text(tapText)
-                    Text(
-                        tapPoint.latitude.formatted(.number.precision(.fractionLength(2)))
-                        + ", " +
-                        tapPoint.longitude.formatted(.number.precision(.fractionLength(2)))
+                    Text( "Tap Point: \(tapPoint.latitude.formatted(.number.precision(.fractionLength(2)))), \(tapPoint.longitude.formatted(.number.precision(.fractionLength(2))))."
                     )
                     Text(hashDate, style: .date)
                 }.padding(20)
