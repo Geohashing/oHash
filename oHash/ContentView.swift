@@ -30,7 +30,8 @@ struct ContentView: View {
             VStack {
                 MapReader { proxy in
                     Map(){
-                        OhGrid.latLongLines(region:mapRegion)
+//                        OhGrid.latLongLines(region:mapRegion)
+                        GridLines(region: mapRegion)
                     }
                         .onTapGesture {
                             position in
