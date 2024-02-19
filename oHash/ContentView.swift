@@ -32,9 +32,7 @@ struct ContentView: View {
                     Map(
 //            TODO  remove this            initialPosition:position
                     ){
-                        OhGrid.latLongLines(
-                            latitudeDelta:mapRegion.span.latitudeDelta, longitudeDelta:mapRegion.span.longitudeDelta
-                        )
+                        OhGrid.latLongLines(region:mapRegion)
                     }
                         .onTapGesture {
                             position in

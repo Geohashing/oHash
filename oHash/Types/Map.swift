@@ -11,12 +11,14 @@ import MapKit
 
 struct OhGrid {
     
-    static func latLongLines(
-        latitudeDelta:Double, longitudeDelta:Double
-    ) -> some MapContent {
+    static func latLongLines(region:MKCoordinateRegion)
+                            -> some MapContent {
         
         var minDelta: Double {
-            Double.minimum(latitudeDelta,longitudeDelta)
+            Double.minimum(
+                region.span.latitudeDelta,
+                region.span.longitudeDelta
+            )
         }
         
         func colorFor(number:Int) -> Color {
