@@ -29,9 +29,7 @@ struct ContentView: View {
             
             VStack {
                 MapReader { proxy in
-                    Map(
-//            TODO  remove this            initialPosition:position
-                    ){
+                    Map(){
                         OhGrid.latLongLines(region:mapRegion)
                     }
                         .onTapGesture {
