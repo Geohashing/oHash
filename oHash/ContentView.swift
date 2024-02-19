@@ -14,7 +14,7 @@ struct ContentView: View {
     @State private var tapText = "no buttons tapped yet"
     @State private var tapPoint = CLLocationCoordinate2D.init()
     @State private var mapRegion = MKCoordinateRegion.init()
-
+    
     
     let position = MapCameraPosition.region(
         MKCoordinateRegion(
@@ -22,7 +22,7 @@ struct ContentView: View {
             span: MKCoordinateSpan(latitudeDelta: 15, longitudeDelta: 15)
         )
     )
-
+    
     
     var body: some View {
         NavigationStack {
@@ -30,29 +30,44 @@ struct ContentView: View {
             VStack {
                 MapReader { proxy in
                     Map(){
-//                        OhGrid.latLongLines(region:mapRegion)
+                        //                        OhGrid.latLongLines(region:mapRegion)
                         GridLines(region: mapRegion)
                     }
-                        .onTapGesture {
-                            position in
-                            tapText = "map tap"
-                            tapPoint = proxy.convert(position, from: .local) ??  CLLocationCoordinate2D.init()
-                        }
-                        .onMapCameraChange(frequency: .continuous) { mapCameraUpdateContext in
-                            mapRegion = mapCameraUpdateContext.region
-                        }
+                    .onTapGesture {
+                        position in
+                        tapText = "map tap"
+                        tapPoint = proxy.convert(position, from: .local) ??  CLLocationCoordinate2D.init()
+                    }
+                    .onMapCameraChange(frequency: .continuous) { mapCameraUpdateContext in
+                        mapRegion = mapCameraUpdateContext.region
+                    }
                 }
-                VStack{
-                    Text( "Centre: \(mapRegion.center.latitude.formatted(.number.precision(.fractionLength(2)))), \(mapRegion.center.longitude.formatted(.number.precision(.fractionLength(2))))."
-                    )
+                Grid{
                     
-                    Text( "Span: \(mapRegion.span.latitudeDelta.formatted(.number.precision(.fractionLength(6)))), \(mapRegion.span.longitudeDelta.formatted(.number.precision(.fractionLength(6))))."
-                    )
+                    GridRow{
+                        Text("Centre:")
+                        Text(mapRegion.center.latitude.formatted(.number.precision(.fractionLength(2))))
+                        Text(mapRegion.center.longitude.formatted(.number.precision(.fractionLength(2))))
+                    }                    .gridColumnAlignment(.trailing)
+                    
+                    GridRow{
+                        Text("Span:")
+                        Text(mapRegion.span.latitudeDelta.formatted(.number.precision(.fractionLength(3))))
+                        Text(mapRegion.span.longitudeDelta.formatted(.number.precision(.fractionLength(3))))
+                    }                    .gridColumnAlignment(.trailing)
+                    
+                    Divider().gridCellUnsizedAxes(.horizontal)
+                    GridRow{
+                        Text("Tap Point:")
+                        Text(tapPoint.latitude.formatted(.number.precision(.fractionLength(2))))
+                        Text(tapPoint.longitude.formatted(.number.precision(.fractionLength(2))))
+                    }                    .gridColumnAlignment(.trailing)
                     Text(tapText)
-                    Text( "Tap Point: \(tapPoint.latitude.formatted(.number.precision(.fractionLength(2)))), \(tapPoint.longitude.formatted(.number.precision(.fractionLength(2))))."
-                    )
+                    Divider().gridCellUnsizedAxes(.horizontal)
                     Text(hashDate, style: .date)
+                    
                 }.padding(20)
+                
             }
             
             .navigationBarTitleDisplayMode(.inline)
@@ -93,15 +108,15 @@ struct ContentView: View {
                 }
                 
                 ToolbarItem(placement: .principal) {
-                                        
+                    
                     DatePicker(
                         "What date do you want to check?",
                         selection: $hashDate,
                         displayedComponents: .date
                     ).labelsHidden()
-                                        
+                    
                 }
-
+                
                 ToolbarItem(placement: .topBarTrailing) {
                     
                     Menu(content: {
@@ -132,7 +147,7 @@ struct ContentView: View {
                         
                     }, label: {Image(systemName: "bell")}
                     )
-
+                    
                     
                 }
                 
@@ -162,13 +177,13 @@ struct ContentView: View {
                         action: {tapText = "tapped e.square" },
                         label: {Image(systemName: "e.square")}
                     )
-                                        
+                    
                 }
                 
             }
         }
     }
-        
+    
 }
 
 #Preview {
