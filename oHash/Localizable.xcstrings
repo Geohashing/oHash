@@ -1,6 +1,9 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
+    "Centre:" : {
+
+    },
     "grat info" : {
       "extractionState" : "stale",
       "localizations" : {
@@ -13,6 +16,12 @@
       }
     },
     "One" : {
+
+    },
+    "Span:" : {
+
+    },
+    "Tap Point:" : {
 
     },
     "Three" : {
