@@ -75,6 +75,44 @@ struct ContentView: View {
                 
                 ToolbarItem(placement: .topBarLeading) {
                     
+                    Button(
+                        action: {
+                            hashDate = Calendar.current.date(
+                                byAdding: DateComponents(day: -1), to: hashDate
+                            ) ?? hashDate
+                        },
+                        label: {Image(systemName: "chevron.left")}
+                    )
+                    
+                }
+                
+                ToolbarItem(placement: .principal) {
+                    
+                    DatePicker(
+                        "What date do you want to check?",
+                        selection: $hashDate,
+                        displayedComponents: .date
+                    ).labelsHidden()
+                    
+                }
+                
+                ToolbarItem(placement: .topBarTrailing) {
+                    
+                    Button(
+                        action: {
+                            hashDate = Calendar.current.date(
+                                byAdding: DateComponents(day: +1), to: hashDate
+                            ) ?? hashDate
+                        },
+                        label: {Image(systemName: "chevron.right")}
+                    )
+
+                    
+                    
+                }
+                
+                ToolbarItemGroup(placement: .bottomBar) {
+                    
                     Menu(content: {
                         
                         Button(
@@ -104,20 +142,25 @@ struct ContentView: View {
                     },
                          label: {Image(systemName: "gearshape")}
                     )
+
+                    Spacer()
+                    Button(
+                        action: {tapText = "tapped a.square" },
+                        label: {Image(systemName: "a.square")}
+                    )
+                    Spacer()
                     
-                }
-                
-                ToolbarItem(placement: .principal) {
+                    Button(
+                        action: {tapText = "tapped b.square" },
+                        label: {Image(systemName: "b.square")}
+                    )
                     
-                    DatePicker(
-                        "What date do you want to check?",
-                        selection: $hashDate,
-                        displayedComponents: .date
-                    ).labelsHidden()
-                    
-                }
-                
-                ToolbarItem(placement: .topBarTrailing) {
+                    Spacer()
+                    Button(
+                        action: {tapText = "tapped c.square" },
+                        label: {Image(systemName: "c.square")}
+                    ).disabled(/*@START_MENU_TOKEN@*/true/*@END_MENU_TOKEN@*/)
+                    Spacer()
                     
                     Menu(content: {
                         
@@ -145,38 +188,10 @@ struct ContentView: View {
                             }
                         )
                         
-                    }, label: {Image(systemName: "bell")}
+                    }, 
+                         label: {Image(systemName: "bell")}
                     )
-                    
-                    
-                }
-                
-                ToolbarItemGroup(placement: .bottomBar) {
-                    
-                    Button(
-                        action: {tapText = "tapped a.square" },
-                        label: {Image(systemName: "a.square")}
-                    )
-                    Spacer()
-                    Button(
-                        action: {tapText = "tapped b.square" },
-                        label: {Image(systemName: "b.square")}
-                    )
-                    Spacer()
-                    Button(
-                        action: {tapText = "tapped c.square" },
-                        label: {Image(systemName: "c.square")}
-                    )
-                    Spacer()
-                    Button(
-                        action: {tapText = "tapped d.square" },
-                        label: {Image(systemName: "d.square")}
-                    ).disabled(/*@START_MENU_TOKEN@*/true/*@END_MENU_TOKEN@*/)
-                    Spacer()
-                    Button(
-                        action: {tapText = "tapped e.square" },
-                        label: {Image(systemName: "e.square")}
-                    )
+
                     
                 }
                 
