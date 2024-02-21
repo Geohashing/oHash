@@ -16,21 +16,12 @@ struct ContentView: View {
     @State private var mapRegion = MKCoordinateRegion.init()
     
     
-    let position = MapCameraPosition.region(
-        MKCoordinateRegion(
-            center: CLLocationCoordinate2D(latitude: 51.507222, longitude: -0.1275),
-            span: MKCoordinateSpan(latitudeDelta: 15, longitudeDelta: 15)
-        )
-    )
-    
-    
     var body: some View {
         NavigationStack {
             
             VStack {
                 MapReader { proxy in
                     Map(){
-                        //                        OhGrid.latLongLines(region:mapRegion)
                         GridLines(region: mapRegion)
                     }
                     .onTapGesture {
@@ -202,5 +193,5 @@ struct ContentView: View {
 }
 
 #Preview {
-    ContentView().previewInterfaceOrientation(.landscapeLeft)
+    ContentView().previewInterfaceOrientation(.portrait)
 }
