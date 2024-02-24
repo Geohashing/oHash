@@ -166,7 +166,7 @@ struct GridLines: MapContent {
         
     } // end var everyTenGratLines
     
-    static let MAX_DELTA_FOR_ONE_GRAT_LINES  =  10.0;
+    static let MAX_DELTA_FOR_ONE_GRAT_LINES  =  20.0;
     static let MAX_DELTA_FOR_TEN_GRAT_LINES = 50.0;
     
     @MapContentBuilder
