@@ -14,15 +14,7 @@ struct ContentView: View {
     @State private var tapText = "no buttons tapped yet"
     @State private var tapPoint = CLLocationCoordinate2D.init()
     @State private var mapRegion = MKCoordinateRegion.init()
-
     
-    let position = MapCameraPosition.region(
-        MKCoordinateRegion(
-            center: CLLocationCoordinate2D(latitude: 51.507222, longitude: -0.1275),
-            span: MKCoordinateSpan(latitudeDelta: 15, longitudeDelta: 15)
-        )
-    )
-
     
     var body: some View {
         NavigationStack {
@@ -30,43 +22,87 @@ struct ContentView: View {
             VStack {
                 MapReader { proxy in
                     Map(){
-                        OhGrid.latLongLines(region:mapRegion)
+                        GridLines(region: mapRegion)
                     }
-                        .onTapGesture {
-                            position in
-                            tapText = "map tap"
-                            tapPoint = proxy.convert(position, from: .local) ??  CLLocationCoordinate2D.init()
-                        }
-                        .onMapCameraChange(frequency: .continuous) { mapCameraUpdateContext in
-                            mapRegion = mapCameraUpdateContext.region
-                        }
+                    .onTapGesture {
+                        position in
+                        tapText = "map tap"
+                        tapPoint = proxy.convert(position, from: .local) ??  CLLocationCoordinate2D.init()
+                    }
+                    .onMapCameraChange(frequency: .continuous) { mapCameraUpdateContext in
+                        mapRegion = mapCameraUpdateContext.region
+                    }
                 }
-                VStack{
-                    Text(
-                        mapRegion.center.latitude.formatted(.number.precision(.fractionLength(2)))
-                        + ", " +
-                        mapRegion.center.longitude.formatted(.number.precision(.fractionLength(2)))
-                    )
+                Grid{
                     
-                    Text(
-                        mapRegion.span.latitudeDelta.formatted(.number.precision(.fractionLength(6)))
-                        + ", " +
-                        mapRegion.span.longitudeDelta.formatted(.number.precision(.fractionLength(6)))
-                    )
+                    GridRow{
+                        Text("Centre:")
+                        Text(mapRegion.center.latitude.formatted(.number.precision(.fractionLength(2))))
+                        Text(mapRegion.center.longitude.formatted(.number.precision(.fractionLength(2))))
+                    }                    .gridColumnAlignment(.trailing)
+                    
+                    GridRow{
+                        Text("Span:")
+                        Text(mapRegion.span.latitudeDelta.formatted(.number.precision(.fractionLength(3))))
+                        Text(mapRegion.span.longitudeDelta.formatted(.number.precision(.fractionLength(3))))
+                    }                    .gridColumnAlignment(.trailing)
+                    
+                    Divider().gridCellUnsizedAxes(.horizontal)
+                    GridRow{
+                        Text("Tap Point:")
+                        Text(tapPoint.latitude.formatted(.number.precision(.fractionLength(2))))
+                        Text(tapPoint.longitude.formatted(.number.precision(.fractionLength(2))))
+                    }                    .gridColumnAlignment(.trailing)
                     Text(tapText)
-                    Text(
-                        tapPoint.latitude.formatted(.number.precision(.fractionLength(2)))
-                        + ", " +
-                        tapPoint.longitude.formatted(.number.precision(.fractionLength(2)))
-                    )
+                    Divider().gridCellUnsizedAxes(.horizontal)
                     Text(hashDate, style: .date)
+                    
                 }.padding(20)
+                
             }
             
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 
                 ToolbarItem(placement: .topBarLeading) {
+                    
+                    Button(
+                        action: {
+                            hashDate = Calendar.current.date(
+                                byAdding: DateComponents(day: -1), to: hashDate
+                            ) ?? hashDate
+                        },
+                        label: {Image(systemName: "chevron.left")}
+                    )
+                    
+                }
+                
+                ToolbarItem(placement: .principal) {
+                    
+                    DatePicker(
+                        "What date do you want to check?",
+                        selection: $hashDate,
+                        displayedComponents: .date
+                    ).labelsHidden()
+                    
+                }
+                
+                ToolbarItem(placement: .topBarTrailing) {
+                    
+                    Button(
+                        action: {
+                            hashDate = Calendar.current.date(
+                                byAdding: DateComponents(day: +1), to: hashDate
+                            ) ?? hashDate
+                        },
+                        label: {Image(systemName: "chevron.right")}
+                    )
+
+                    
+                    
+                }
+                
+                ToolbarItemGroup(placement: .bottomBar) {
                     
                     Menu(content: {
                         
@@ -97,20 +133,25 @@ struct ContentView: View {
                     },
                          label: {Image(systemName: "gearshape")}
                     )
-                    
-                }
-                
-                ToolbarItem(placement: .principal) {
-                                        
-                    DatePicker(
-                        "What date do you want to check?",
-                        selection: $hashDate,
-                        displayedComponents: .date
-                    ).labelsHidden()
-                                        
-                }
 
-                ToolbarItem(placement: .topBarTrailing) {
+                    Spacer()
+                    Button(
+                        action: {tapText = "tapped a.square" },
+                        label: {Image(systemName: "a.square")}
+                    )
+                    Spacer()
+                    
+                    Button(
+                        action: {tapText = "tapped b.square" },
+                        label: {Image(systemName: "b.square")}
+                    )
+                    
+                    Spacer()
+                    Button(
+                        action: {tapText = "tapped c.square" },
+                        label: {Image(systemName: "c.square")}
+                    ).disabled(/*@START_MENU_TOKEN@*/true/*@END_MENU_TOKEN@*/)
+                    Spacer()
                     
                     Menu(content: {
                         
@@ -138,47 +179,19 @@ struct ContentView: View {
                             }
                         )
                         
-                    }, label: {Image(systemName: "bell")}
+                    }, 
+                         label: {Image(systemName: "bell")}
                     )
 
                     
-                }
-                
-                ToolbarItemGroup(placement: .bottomBar) {
-                    
-                    Button(
-                        action: {tapText = "tapped a.square" },
-                        label: {Image(systemName: "a.square")}
-                    )
-                    Spacer()
-                    Button(
-                        action: {tapText = "tapped b.square" },
-                        label: {Image(systemName: "b.square")}
-                    )
-                    Spacer()
-                    Button(
-                        action: {tapText = "tapped c.square" },
-                        label: {Image(systemName: "c.square")}
-                    )
-                    Spacer()
-                    Button(
-                        action: {tapText = "tapped d.square" },
-                        label: {Image(systemName: "d.square")}
-                    ).disabled(/*@START_MENU_TOKEN@*/true/*@END_MENU_TOKEN@*/)
-                    Spacer()
-                    Button(
-                        action: {tapText = "tapped e.square" },
-                        label: {Image(systemName: "e.square")}
-                    )
-                                        
                 }
                 
             }
         }
     }
-        
+    
 }
 
 #Preview {
-    ContentView().previewInterfaceOrientation(.landscapeLeft)
+    ContentView().previewInterfaceOrientation(.portrait)
 }
