@@ -98,7 +98,7 @@ struct GridLines: MapContent {
         } // end ForEach longitude
         
     } // end allGratLines
-        
+    
     let firstEveryTenLat  = -80.0 // ie 80° South
     let lastEveryTenLat   = +80.0 // ie 80° North
     
@@ -112,27 +112,27 @@ struct GridLines: MapContent {
         ForEach(Array(stride(from: firstEveryTenLat, to: lastEveryTenLat, by: 10.0)), id: \.self) {
             thisLat in
             
-//            if latitudeRange().contains(thisLat) {
-                // Draw Latitude line in Western hemisphere
-                MapPolyline(coordinates:[
-                    CLLocationCoordinate2D(
-                        latitude:thisLat, longitude: -180
-                    ),
-                    CLLocationCoordinate2D(
-                        latitude: thisLat, longitude: 0
-                    )
-                ]).stroke(Color.primary)
-                
-                // Draw Latitude line in Eastern hemisphere
-                MapPolyline(coordinates:[
-                    CLLocationCoordinate2D(
-                        latitude:thisLat, longitude: 0
-                    ),
-                    CLLocationCoordinate2D(
-                        latitude: thisLat, longitude: 180
-                    )
-                ]).stroke(Color.primary)
-//            } // end if latitudeRange contains thisLat
+            //            if latitudeRange().contains(thisLat) {
+            // Draw Latitude line in Western hemisphere
+            MapPolyline(coordinates:[
+                CLLocationCoordinate2D(
+                    latitude:thisLat, longitude: -180
+                ),
+                CLLocationCoordinate2D(
+                    latitude: thisLat, longitude: 0
+                )
+            ]).stroke(Color.primary)
+            
+            // Draw Latitude line in Eastern hemisphere
+            MapPolyline(coordinates:[
+                CLLocationCoordinate2D(
+                    latitude:thisLat, longitude: 0
+                ),
+                CLLocationCoordinate2D(
+                    latitude: thisLat, longitude: 180
+                )
+            ]).stroke(Color.primary)
+            //            } // end if latitudeRange contains thisLat
             
         } // end Latitude lines
         
@@ -166,17 +166,93 @@ struct GridLines: MapContent {
         
     } // end var everyTenGratLines
     
-    static let MAX_DELTA_FOR_ONE_GRAT_LINES  =  20.0;
-    static let MAX_DELTA_FOR_TEN_GRAT_LINES = 50.0;
+    let firstEveryFiveLat  = -85.0 // ie 85° South
+    let lastEveryFiveLat   = +85.0 // ie 85° North
+    
+    let firstEveryFiveLong = -180.0 // ie 180° West
+    let lastEveryFiveLong  = +175.0 // ie 175° East
+    
+    @MapContentBuilder
+    var everyFiveGratLines: some MapContent {
+        
+        // Draw Latitude lines
+        ForEach(Array(stride(from: firstEveryFiveLat, to: lastEveryFiveLat, by: 5.0)), id: \.self) {
+            thisLat in
+            
+            //            if latitudeRange().contains(thisLat) {
+            // Draw Latitude line in Western hemisphere
+            MapPolyline(coordinates:[
+                CLLocationCoordinate2D(
+                    latitude:thisLat, longitude: -180
+                ),
+                CLLocationCoordinate2D(
+                    latitude: thisLat, longitude: 0
+                )
+            ]).stroke(Color.primary)
+            
+            // Draw Latitude line in Eastern hemisphere
+            MapPolyline(coordinates:[
+                CLLocationCoordinate2D(
+                    latitude:thisLat, longitude: 0
+                ),
+                CLLocationCoordinate2D(
+                    latitude: thisLat, longitude: 180
+                )
+            ]).stroke(Color.primary)
+            //            } // end if latitudeRange contains thisLat
+            
+        } // end Latitude lines
+        
+        // Draw Longitude lines
+        ForEach(Array(stride(from: firstEveryFiveLong, to: lastEveryFiveLong, by: 5.0)), id: \.self) {
+            thisLong in
+            
+            if longitudeRange().contains(thisLong) {
+                // Longitude line in Northern hemisphere
+                MapPolyline(coordinates:[
+                    CLLocationCoordinate2D(
+                        latitude:-90, longitude: thisLong
+                    ),
+                    CLLocationCoordinate2D(
+                        latitude: 0, longitude: thisLong
+                    )
+                ]).stroke(Color.primary)
+                
+                // Longitude line in Southern hemisphere
+                MapPolyline(coordinates:[
+                    CLLocationCoordinate2D(
+                        latitude:0, longitude: thisLong
+                    ),
+                    CLLocationCoordinate2D(
+                        latitude: +90, longitude: thisLong
+                    )
+                ]).stroke(Color.primary)
+            } // end if longitudeRange contains thisLong
+            
+        } // end Longitude lines
+        
+    } // end var everyFiveGratLines
+    
+    static let MAX_DELTA_FOR_HASHPOINTS      =  4.0
+    static let MAX_DELTA_FOR_ONE_GRAT_LINES  = 12.0;
+    static let MAX_DELTA_FOR_FIVE_GRAT_LINES = 25.0;
+    static let MAX_DELTA_FOR_TEN_GRAT_LINES  = 50.0;
     
     @MapContentBuilder
     var body: some MapContent {
         
         switch minDelta {
-        case 0.0...Self.MAX_DELTA_FOR_ONE_GRAT_LINES:
+        case 0.0..<Self.MAX_DELTA_FOR_HASHPOINTS:
             allGratLines
-                        
-        case Self.MAX_DELTA_FOR_ONE_GRAT_LINES...Self.MAX_DELTA_FOR_TEN_GRAT_LINES:
+            
+        case Self.MAX_DELTA_FOR_HASHPOINTS..<Self.MAX_DELTA_FOR_ONE_GRAT_LINES:
+            allGratLines
+            EmptyMapContent.init() // TODO: Insert actual hashpoints here
+            
+        case Self.MAX_DELTA_FOR_ONE_GRAT_LINES..<Self.MAX_DELTA_FOR_FIVE_GRAT_LINES:
+            everyFiveGratLines
+            
+        case Self.MAX_DELTA_FOR_FIVE_GRAT_LINES..<Self.MAX_DELTA_FOR_TEN_GRAT_LINES:
             everyTenGratLines
             
         default:
