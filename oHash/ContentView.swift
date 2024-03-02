@@ -72,7 +72,7 @@ struct ContentView: View {
                                 byAdding: DateComponents(day: -1), to: hashDate
                             ) ?? hashDate
                         },
-                        label: {Image(systemName: "chevron.left")}
+                        label: {Image(systemName: "chevron.backward")}
                     )
                     
                 }
@@ -95,7 +95,7 @@ struct ContentView: View {
                                 byAdding: DateComponents(day: +1), to: hashDate
                             ) ?? hashDate
                         },
-                        label: {Image(systemName: "chevron.right")}
+                        label: {Image(systemName: "chevron.forward")}
                     )
 
                     
