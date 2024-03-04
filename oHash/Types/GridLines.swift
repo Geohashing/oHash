@@ -35,6 +35,14 @@ struct GridLines: MapContent {
         return n.isMultiple(of: 5) ? Color.primary : Color.accentColor
     }
     
+    func safeIntLat(_ n:Int) -> Int {
+        ( (n+180) % 360) - 180
+    }
+    
+    func safeDoubleLat(_ n:Double) -> Double {
+        (n+180).remainder(dividingBy: 360) - 180
+    }
+    
     @MapContentBuilder
     var allGratLines: some MapContent {
         
@@ -49,23 +57,16 @@ struct GridLines: MapContent {
         ForEach(northernmostLatitude...southernmostLatitude, id: \.self) {
             thisLat in
             
-            // Draw Latitude line in Western hemisphere
+            // Draw Latitude line
             MapPolyline(coordinates:[
                 CLLocationCoordinate2D(
-                    latitude:CLLocationDegrees(thisLat), longitude: -180
+                    latitude:CLLocationDegrees(safeIntLat(thisLat)), longitude: -180
                 ),
                 CLLocationCoordinate2D(
-                    latitude:CLLocationDegrees(thisLat), longitude: 0
-                )
-            ]).stroke(colorForNumber(thisLat))
-            
-            // Draw Latitude line in Eastern hemisphere
-            MapPolyline(coordinates:[
-                CLLocationCoordinate2D(
-                    latitude:CLLocationDegrees(thisLat), longitude: 0
+                    latitude:CLLocationDegrees(safeIntLat(thisLat)), longitude: 0
                 ),
                 CLLocationCoordinate2D(
-                    latitude:CLLocationDegrees(thisLat), longitude: +180
+                    latitude:CLLocationDegrees(safeIntLat(thisLat)), longitude: +180 - 0.00000001
                 )
             ]).stroke(colorForNumber(thisLat))
             
@@ -75,20 +76,10 @@ struct GridLines: MapContent {
         ForEach(westernmostLongitude...easternmostLongitude, id: \.self) {
             thisLong in
             
-            // Longitude line in Northern hemisphere
+            // Longitude line
             MapPolyline(coordinates:[
                 CLLocationCoordinate2D(
                     latitude:-90, longitude: CLLocationDegrees(thisLong)
-                ),
-                CLLocationCoordinate2D(
-                    latitude: 0, longitude: CLLocationDegrees(thisLong)
-                )
-            ]).stroke(colorForNumber(thisLong))
-            
-            //                         Longitude line in Southern hemisphere
-            MapPolyline(coordinates:[
-                CLLocationCoordinate2D(
-                    latitude:0, longitude: CLLocationDegrees(thisLong)
                 ),
                 CLLocationCoordinate2D(
                     latitude: +90, longitude: CLLocationDegrees(thisLong)
@@ -112,27 +103,18 @@ struct GridLines: MapContent {
         ForEach(Array(stride(from: firstEveryTenLat, to: lastEveryTenLat, by: 10.0)), id: \.self) {
             thisLat in
             
-            //            if latitudeRange().contains(thisLat) {
-            // Draw Latitude line in Western hemisphere
+            // Draw Latitude line
             MapPolyline(coordinates:[
                 CLLocationCoordinate2D(
-                    latitude:thisLat, longitude: -180
+                    latitude:CLLocationDegrees(safeDoubleLat(thisLat)), longitude: -180
                 ),
                 CLLocationCoordinate2D(
-                    latitude: thisLat, longitude: 0
-                )
-            ]).stroke(Color.primary)
-            
-            // Draw Latitude line in Eastern hemisphere
-            MapPolyline(coordinates:[
-                CLLocationCoordinate2D(
-                    latitude:thisLat, longitude: 0
+                    latitude:CLLocationDegrees(safeDoubleLat(thisLat)), longitude: 0
                 ),
                 CLLocationCoordinate2D(
-                    latitude: thisLat, longitude: 180
+                    latitude:CLLocationDegrees(safeDoubleLat(thisLat)), longitude: 180 - 0.00000001
                 )
             ]).stroke(Color.primary)
-            //            } // end if latitudeRange contains thisLat
             
         } // end Latitude lines
         
@@ -140,27 +122,15 @@ struct GridLines: MapContent {
         ForEach(Array(stride(from: firstEveryTenLong, to: lastEveryTenLong, by: 10.0)), id: \.self) {
             thisLong in
             
-            if longitudeRange().contains(thisLong) {
-                // Longitude line in Northern hemisphere
+                // Longitude line
                 MapPolyline(coordinates:[
                     CLLocationCoordinate2D(
-                        latitude:-90, longitude: thisLong
-                    ),
-                    CLLocationCoordinate2D(
-                        latitude: 0, longitude: thisLong
-                    )
-                ]).stroke(Color.primary)
-                
-                // Longitude line in Southern hemisphere
-                MapPolyline(coordinates:[
-                    CLLocationCoordinate2D(
-                        latitude:0, longitude: thisLong
+                        latitude: -90, longitude: thisLong
                     ),
                     CLLocationCoordinate2D(
                         latitude: +90, longitude: thisLong
                     )
                 ]).stroke(Color.primary)
-            } // end if longitudeRange contains thisLong
             
         } // end Longitude lines
         
@@ -179,27 +149,18 @@ struct GridLines: MapContent {
         ForEach(Array(stride(from: firstEveryFiveLat, to: lastEveryFiveLat, by: 5.0)), id: \.self) {
             thisLat in
             
-            //            if latitudeRange().contains(thisLat) {
-            // Draw Latitude line in Western hemisphere
+            // Draw Latitude line
             MapPolyline(coordinates:[
                 CLLocationCoordinate2D(
-                    latitude:thisLat, longitude: -180
+                    latitude:CLLocationDegrees(safeDoubleLat(thisLat)), longitude: -180
                 ),
                 CLLocationCoordinate2D(
-                    latitude: thisLat, longitude: 0
-                )
-            ]).stroke(Color.primary)
-            
-            // Draw Latitude line in Eastern hemisphere
-            MapPolyline(coordinates:[
-                CLLocationCoordinate2D(
-                    latitude:thisLat, longitude: 0
+                    latitude:CLLocationDegrees(safeDoubleLat(thisLat)), longitude: 0
                 ),
                 CLLocationCoordinate2D(
-                    latitude: thisLat, longitude: 180
+                    latitude:CLLocationDegrees(safeDoubleLat(thisLat)), longitude: 180 - 0.00000001
                 )
             ]).stroke(Color.primary)
-            //            } // end if latitudeRange contains thisLat
             
         } // end Latitude lines
         
@@ -207,27 +168,15 @@ struct GridLines: MapContent {
         ForEach(Array(stride(from: firstEveryFiveLong, to: lastEveryFiveLong, by: 5.0)), id: \.self) {
             thisLong in
             
-            if longitudeRange().contains(thisLong) {
-                // Longitude line in Northern hemisphere
+                // Longitude line
                 MapPolyline(coordinates:[
                     CLLocationCoordinate2D(
                         latitude:-90, longitude: thisLong
                     ),
                     CLLocationCoordinate2D(
-                        latitude: 0, longitude: thisLong
-                    )
-                ]).stroke(Color.primary)
-                
-                // Longitude line in Southern hemisphere
-                MapPolyline(coordinates:[
-                    CLLocationCoordinate2D(
-                        latitude:0, longitude: thisLong
-                    ),
-                    CLLocationCoordinate2D(
                         latitude: +90, longitude: thisLong
                     )
                 ]).stroke(Color.primary)
-            } // end if longitudeRange contains thisLong
             
         } // end Longitude lines
         
