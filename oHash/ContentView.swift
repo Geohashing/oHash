@@ -20,6 +20,7 @@ struct ContentView: View {
         NavigationStack {
             
             VStack {
+                DateSection(hashDate:$hashDate)
                 MapReader { proxy in
                     Map(){
                         GridLines(region: mapRegion)
