@@ -76,6 +76,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4102EF512B9C43FA008BBEFD /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				41976E562B83945200274871 /* GridLines.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		412506D82B6F232E00055D7E = {
 			isa = PBXGroup;
 			children = (
@@ -99,8 +107,8 @@
 		412506E32B6F232E00055D7E /* oHash */ = {
 			isa = PBXGroup;
 			children = (
+				4102EF512B9C43FA008BBEFD /* Views */,
 				41CF931F2B8A073000CBF90B /* Info.plist */,
-				4192FFB22B7C221A002A6C3C /* Types */,
 				412506E42B6F232E00055D7E /* oHashApp.swift */,
 				412506E62B6F232E00055D7E /* ContentView.swift */,
 				4125070E2B6F355600055D7E /* Localizable.xcstrings */,
@@ -133,14 +141,6 @@
 				412507012B6F232F00055D7E /* oHashUITestsLaunchTests.swift */,
 			);
 			path = oHashUITests;
-			sourceTree = "<group>";
-		};
-		4192FFB22B7C221A002A6C3C /* Types */ = {
-			isa = PBXGroup;
-			children = (
-				41976E562B83945200274871 /* GridLines.swift */,
-			);
-			path = Types;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
