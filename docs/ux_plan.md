@@ -14,7 +14,7 @@
 ### On Startup (if we have location permission)
 
 - Calculate hashpoint for home grat
-- Calculate hashpoints for 8 surrounding grats
+- Calculate hashpoints for 8 surrounding grats, plus any other visible grats
 - Zoom to show user location and closest hashpoint
 - "Select" the grat with the closest hashpoint
 
