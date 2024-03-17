@@ -16,7 +16,7 @@ struct ContentView: View {
     @State private var mapRegion = MKCoordinateRegion.init()
     
     var colors = ["Retro", "Yesterday", "Today", "Tomorrow","Monday"]
-    @State private var selectedColor = "Red"
+    @State private var selectedColor = "Today"
     
     
     var body: some View {
@@ -91,7 +91,7 @@ struct ContentView: View {
 //                    Divider().gridCellUnsizedAxes(.horizontal)
 //                    Text(hashDate, style: .date)
                     
-                }.padding(10)
+                }//.padding(10)
                 
             }
             
@@ -130,23 +130,7 @@ struct ContentView: View {
                     )
 
                     Spacer()
-                    Button(
-                        action: {tapText = "tapped doc.richtext" },
-                        label: {Image(systemName: "doc.richtext")}
-                    )
-                    Spacer()
                     
-                    Button(
-                        action: {tapText = "tapped newspaper" },
-                        label: {Image(systemName: "newspaper")}
-                    )
-                    
-                    Spacer()
-                    Button(
-                        action: {tapText = "tapped map icon" },
-                        label: {Image(systemName: "map")}
-                    )
-                    Spacer()
                     
                     Menu(content: {
                         
@@ -174,11 +158,33 @@ struct ContentView: View {
                             }
                         )
                         
-                    }, 
-                         label: {Image(systemName: "bell")}
+                    },
+                         label: {Image(systemName: "location.fill").font(.title)}
                     )
 
+                    Spacer()
+
+                    Menu(content: {
+                        
+                        Button(
+                            action: {tapText = "tapped doc.richtext" },
+                            label: {Image(systemName: "doc.richtext")}
+                        )
+                        
+                        Button(
+                            action: {tapText = "tapped newspaper" },
+                            label: {Image(systemName: "newspaper")}
+                        )
+                        
+                        Button(
+                            action: {tapText = "tapped map icon" },
+                            label: {Image(systemName: "map")}
+                        )
+                        
+                    },
+                         label:{Image(systemName: "square.and.arrow.up")})
                     
+
                 }
                 
             }
