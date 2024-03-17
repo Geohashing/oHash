@@ -1,7 +1,25 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
-    "Centre:" : {
+    "-123, 45" : {
+
+    },
+    "-123,45678, 45.67890" : {
+
+    },
+    "1 Jan 2000" : {
+
+    },
+    "12 m" : {
+
+    },
+    "123 km" : {
+
+    },
+    "Closest Distance:" : {
+
+    },
+    "Current Distance:" : {
 
     },
     "grat info" : {
@@ -18,10 +36,7 @@
     "One" : {
 
     },
-    "Span:" : {
-
-    },
-    "Tap Point:" : {
+    "Please choose a color" : {
 
     },
     "Three" : {
@@ -39,9 +54,6 @@
       }
     },
     "Two" : {
-
-    },
-    "What date do you want to check?" : {
 
     }
   },

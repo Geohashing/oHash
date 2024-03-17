@@ -15,13 +15,16 @@ struct ContentView: View {
     @State private var tapPoint = CLLocationCoordinate2D.init()
     @State private var mapRegion = MKCoordinateRegion.init()
     
+    var colors = ["Retro", "Yesterday", "Today", "Tomorrow","Monday"]
+    @State private var selectedColor = "Red"
+    
     
     var body: some View {
         NavigationStack {
             
             VStack {
                 MapReader { proxy in
-                    Map(){
+                    Map(interactionModes: [.pan, .zoom]){
                         GridLines(region: mapRegion)
                     }
                     .onTapGesture {
@@ -35,72 +38,64 @@ struct ContentView: View {
                 }
                 Grid{
                     
-                    GridRow{
-                        Text("Centre:")
-                        Text(mapRegion.center.latitude.formatted(.number.precision(.fractionLength(2))))
-                        Text(mapRegion.center.longitude.formatted(.number.precision(.fractionLength(2))))
-                    }                    .gridColumnAlignment(.trailing)
-                    
-                    GridRow{
-                        Text("Span:")
-                        Text(mapRegion.span.latitudeDelta.formatted(.number.precision(.fractionLength(3))))
-                        Text(mapRegion.span.longitudeDelta.formatted(.number.precision(.fractionLength(3))))
-                    }                    .gridColumnAlignment(.trailing)
-                    
+                    Text("-123, 45")
+                        .font(.largeTitle)
+                    Text("-123,45678, 45.67890")
+
                     Divider().gridCellUnsizedAxes(.horizontal)
+
                     GridRow{
-                        Text("Tap Point:")
-                        Text(tapPoint.latitude.formatted(.number.precision(.fractionLength(2))))
-                        Text(tapPoint.longitude.formatted(.number.precision(.fractionLength(2))))
-                    }                    .gridColumnAlignment(.trailing)
-                    Text(tapText)
+//                        Text("Today:").gridColumnAlignment(.trailing).font(.title2)
+                        Picker("Please choose a color", selection: $selectedColor) {
+                            ForEach(colors, id: \.self) {
+                                Text($0)
+                            }
+                        }                        .gridColumnAlignment(.trailing)
+                        Text("1 Jan 2000").gridColumnAlignment(.leading).font(.title2)
+                    }
+
                     Divider().gridCellUnsizedAxes(.horizontal)
-                    Text(hashDate, style: .date)
+
+                    GridRow{
+                        Text("Current Distance:").gridColumnAlignment(.trailing)
+                        Text("123 km").gridColumnAlignment(.leading).font(.title2)
+                    }
                     
-                }.padding(20)
+                    GridRow{
+                        Text("Closest Distance:").gridColumnAlignment(.trailing)
+                        Text("12 m").gridColumnAlignment(.leading).font(.title2)
+                    }
+
+                    Divider().gridCellUnsizedAxes(.horizontal)
+
+
+//                    GridRow{
+//                        Text("Centre:")
+//                        Text(mapRegion.center.latitude.formatted(.number.precision(.fractionLength(2))))
+//                        Text(mapRegion.center.longitude.formatted(.number.precision(.fractionLength(2))))
+//                    }                    .gridColumnAlignment(.trailing)
+//                    
+//                    GridRow{
+//                        Text("Span:")
+//                        Text(mapRegion.span.latitudeDelta.formatted(.number.precision(.fractionLength(3))))
+//                        Text(mapRegion.span.longitudeDelta.formatted(.number.precision(.fractionLength(3))))
+//                    }                    .gridColumnAlignment(.trailing)
+//                    
+//                    Divider().gridCellUnsizedAxes(.horizontal)
+//                    GridRow{
+//                        Text("Tap Point:")
+//                        Text(tapPoint.latitude.formatted(.number.precision(.fractionLength(2))))
+//                        Text(tapPoint.longitude.formatted(.number.precision(.fractionLength(2))))
+//                    }                    .gridColumnAlignment(.trailing)
+//                    Text(tapText)
+//                    Divider().gridCellUnsizedAxes(.horizontal)
+//                    Text(hashDate, style: .date)
+                    
+                }.padding(10)
                 
             }
             
-            .navigationBarTitleDisplayMode(.inline)
             .toolbar {
-                
-                ToolbarItem(placement: .topBarLeading) {
-                    
-                    Button(
-                        action: {
-                            hashDate = Calendar.current.date(
-                                byAdding: DateComponents(day: -1), to: hashDate
-                            ) ?? hashDate
-                        },
-                        label: {Image(systemName: "chevron.backward")}
-                    )
-                    
-                }
-                
-                ToolbarItem(placement: .principal) {
-                    
-                    DatePicker(
-                        "What date do you want to check?",
-                        selection: $hashDate,
-                        displayedComponents: .date
-                    ).labelsHidden()
-                    
-                }
-                
-                ToolbarItem(placement: .topBarTrailing) {
-                    
-                    Button(
-                        action: {
-                            hashDate = Calendar.current.date(
-                                byAdding: DateComponents(day: +1), to: hashDate
-                            ) ?? hashDate
-                        },
-                        label: {Image(systemName: "chevron.forward")}
-                    )
-
-                    
-                    
-                }
                 
                 ToolbarItemGroup(placement: .bottomBar) {
                     
@@ -136,21 +131,21 @@ struct ContentView: View {
 
                     Spacer()
                     Button(
-                        action: {tapText = "tapped a.square" },
-                        label: {Image(systemName: "a.square")}
+                        action: {tapText = "tapped doc.richtext" },
+                        label: {Image(systemName: "doc.richtext")}
                     )
                     Spacer()
                     
                     Button(
-                        action: {tapText = "tapped b.square" },
-                        label: {Image(systemName: "b.square")}
+                        action: {tapText = "tapped newspaper" },
+                        label: {Image(systemName: "newspaper")}
                     )
                     
                     Spacer()
                     Button(
-                        action: {tapText = "tapped c.square" },
-                        label: {Image(systemName: "c.square")}
-                    ).disabled(/*@START_MENU_TOKEN@*/true/*@END_MENU_TOKEN@*/)
+                        action: {tapText = "tapped map icon" },
+                        label: {Image(systemName: "map")}
+                    )
                     Spacer()
                     
                     Menu(content: {
