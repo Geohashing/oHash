@@ -1,8 +1,13 @@
-# UX Brainstorming
+# UX Brainstorming - version 1
+
+## NO LONGER CURRENT
+
+This version of the UX outline is no longer current. It has been replaced by 
+[version 2](ux_plan_02.md)
 
 ## Mockup Image
 
-![Screen mockup with small Dates section at the top, large Map section in the middle, and meduim sized Graticule Info section at the bottom](images/napkin-mockup.png)
+![Screen mockup with small Dates section at the top, large Map section in the middle, and meduim sized Graticule Info section at the bottom](images/napkin-mockup-v01.png)
 
 ## Dates
 

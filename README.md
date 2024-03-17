@@ -9,5 +9,5 @@ I've started building the user interface, but
 it doesn't actually calculate any hashpoints just yet.
 
 There's also my thoughts on eg
-[what the user experience should be](docs/ux_plan.md) and 
+[what the user experience should be](docs/ux_plan_01.md) and 
 [what versions of iOS should we support](docs/iOS_versions.md).
