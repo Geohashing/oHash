@@ -1,25 +1,15 @@
-# UX Brainstorming - version 1
-
-## NO LONGER CURRENT
-
-This version of the UX outline is no longer current. It has been replaced by 
-[version 2](ux_plan_02.md)
+# UX Brainstorming
 
 ## Mockup Image
 
-![Screen mockup with small Dates section at the top, large Map section in the middle, and meduim sized Graticule Info section at the bottom](images/napkin-mockup-v01.png)
-
-## Dates
-
-- Default to 'today'
-- Allow user to change to any other date if they want
+![Screen mockup with large Map section, and meduim sized Graticule Info section at the bottom](images/napkin-mockup-v01.png)
 
 ## Map Section
 
 ### On Startup (if we have location permission)
 
 - Calculate hashpoint for home grat
-- Calculate hashpoints for 8 surrounding grats, plus any other visible grats
+- Calculate hashpoints for 8 surrounding grats (note - any other visible hashpoints are calculated later)
 - Zoom to show user location and closest hashpoint
 - "Select" the grat with the closest hashpoint
 
@@ -66,11 +56,19 @@ This version of the UX outline is no longer current. It has been replaced by
 
 ## Graticule Display on Map
 
-### If we DO have the DJ Open
+If we're zoomed in to just a handful of grats,
+then every graticule that is visible
+will be displayed as follows.
 
-Calculate and dispay the hashpoint
+### If we DO have the DJ Open for that grat
 
-### If we do NOT have the DJ Open
+- If we are looking at Today (or a date in the future),
+        then calculate and dispay the hashpoint for that date for that grat,
+        and also calculate and display all available future hashpoints for that grat
+- If we are looking at a date in the past,
+        then calculate and display the hashpoint for that date only
+
+### If we do NOT have the DJ Open for that grat
 
 Display an icon to suggest why we have no DJ Open, eg:
 
@@ -84,8 +82,7 @@ Display an icon to suggest why we have no DJ Open, eg:
 
 ### If no grat is selected
 
-- Shrink down Grat Info section
-- Display a message like "Click the map to select a box"
+- Display a message like "Click the map to select a graticule, or use your location."
 
 ### If a grat is selected and we do NOT have its DJ Open
 
@@ -103,4 +100,23 @@ Display an icon to suggest why we have no DJ Open, eg:
 
 ### If a grat is selected and we DO have its DJ Open and ALSO the current location
 
-- Calculate & display distance from current location
+- Calculate & display current distance from current location
+- Calculate & display CLOSEST distance you've gotten so far
+- Display whether you have, or have not, gotten exactly to the hashpoint
+(or within a certain error margin, likely 10.5 metres)
+
+## Notifications
+
+User can request a notification, whenever that day's closest hashpoint is
+within a specified distance
+
+User can request a notification, whenver that day's global hahs is
+within a (separately) specified distance
+
+## Possible Future Additions
+
+- Record a tracklog
+- Create / populate wiki page
+- Generate "proof" screen shot (or user could just take a regular screen shot...)
+- Determine the best path to the hashpoint, 
+using car / public transport / walking etc
