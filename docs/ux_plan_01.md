@@ -110,7 +110,7 @@ Display an icon to suggest why we have no DJ Open, eg:
 User can request a notification, whenever that day's closest hashpoint is
 within a specified distance
 
-User can request a notification, whenver that day's global hahs is
+User can request a notification, whenver that day's global hash is
 within a (separately) specified distance
 
 ## Possible Future Additions
