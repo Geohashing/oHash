@@ -13,16 +13,22 @@
     "123 km" : {
 
     },
-    "Closest:" : {
+    "Apple Maps" : {
+
+    },
+    "Closest" : {
 
     },
     "Current" : {
 
     },
-    "Date:" : {
+    "Date" : {
 
     },
-    "Distance:" : {
+    "Distance" : {
+
+    },
+    "Google Maps" : {
 
     },
     "grat info" : {
@@ -42,6 +48,9 @@
     "Please enter a date" : {
 
     },
+    "Poster" : {
+
+    },
     "Retrohash" : {
 
     },
@@ -59,10 +68,13 @@
         }
       }
     },
+    "Today" : {
+
+    },
     "Two" : {
 
     },
-    "Which Date" : {
+    "Wiki Page" : {
 
     }
   },

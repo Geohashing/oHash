@@ -52,26 +52,20 @@ struct ContentView: View {
                     
                     if (retroHashMode) {
                         GridRow {
-                            Text("Date:").gridColumnAlignment(.trailing)
+                            Text("Date").gridColumnAlignment(.trailing)
                             DatePicker(
-                                "Please enter a date", 
+                                "Please enter a date",
                                 selection: $selectedRetroDay,
                                 displayedComponents: .date
                             )
-                                .labelsHidden()
-                            .gridColumnAlignment(.leading).font(.title)
-                        }                        
+                            .labelsHidden()
+                            .gridColumnAlignment(.leading).font(.title2)
+                        }
                     } else { // regular, current dates mode
                         GridRow {
-                            Text("Date:").gridColumnAlignment(.trailing)
-                            Picker("Which Date", selection: $selectedCurrentDay) {
-                                ForEach(currentDays, id: \.self) {
-                                    Text($0)
-                                }
-                            }.pickerStyle(.automatic)
-                            .gridColumnAlignment(.leading)
+                            Text("Today").gridColumnAlignment(.trailing)
+                            Text(Date.now.formatted(date: .abbreviated, time:.omitted)).gridColumnAlignment(.leading).font(.title2)
                         }
-                        Text(selectedRetroDay, style: .date)
                         
                     } // end if retroHashMode
                     
@@ -79,13 +73,13 @@ struct ContentView: View {
                     Divider().gridCellUnsizedAxes(.horizontal)
                     
                     GridRow{
-                        Text("Distance:").gridColumnAlignment(.trailing)
-                        Text("123 km").gridColumnAlignment(.leading).font(.title)
+                        Text("Distance").gridColumnAlignment(.trailing)
+                        Text("123 km").gridColumnAlignment(.leading).font(.title2)
                     }
                     
                     GridRow{
-                        Text("Closest:").gridColumnAlignment(.trailing)
-                        Text("12 m").gridColumnAlignment(.leading).font(.title)
+                        Text("Closest").gridColumnAlignment(.trailing)
+                        Text("12 m").gridColumnAlignment(.leading).font(.title2)
                     }
                     
                     Divider().gridCellUnsizedAxes(.horizontal)
@@ -131,34 +125,11 @@ struct ContentView: View {
                     Spacer()
                     
                     
-                    Menu(content: {
-                        
-                        Button(
-                            action: {tapText = "tapped 2.square" },
-                            label: {
-                                Image(systemName: "2.square")
-                                Text("Two")
-                            }
-                        )
-                        
-                        Button(
-                            action: {tapText = "tapped 1.square" },
-                            label: {
-                                Image(systemName: "1.square")
-                                Text("One")
-                            }
-                        )
-
-                        Button(
-                            action: {tapText = "tapped 3.square" },
-                            label: {
-                                Image(systemName: "3.square")
-                                Text("Three")
-                            }
-                        )
-                        
-                    },
-                         label: {Image(systemName: "location.fill").font(.title)}
+                    Button(
+                        action: {tapText = "tapped Location" },
+                        label: {
+                            Image(systemName: "location.fill").font(.largeTitle)
+                        }
                     )
                     
                     Spacer()
@@ -198,7 +169,6 @@ struct ContentView: View {
                         
                     },
                          label:{Image(systemName: "square.and.arrow.up")})
-                    
                     
                 }
                 
