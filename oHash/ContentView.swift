@@ -15,13 +15,18 @@ struct ContentView: View {
     @State private var tapPoint = CLLocationCoordinate2D.init()
     @State private var mapRegion = MKCoordinateRegion.init()
     
+    @State private var retroHashMode = false
+    var currentDays = ["Today", "Tomorrow", "Monday"]
+    @State private var selectedCurrentDay = "Today"
+    @State private var selectedRetroDay = Date.now
+    
     
     var body: some View {
         NavigationStack {
             
             VStack {
                 MapReader { proxy in
-                    Map(){
+                    Map(interactionModes: [.pan, .zoom]){
                         GridLines(region: mapRegion)
                     }
                     .onTapGesture {
@@ -35,72 +40,55 @@ struct ContentView: View {
                 }
                 Grid{
                     
-                    GridRow{
-                        Text("Centre:")
-                        Text(mapRegion.center.latitude.formatted(.number.precision(.fractionLength(2))))
-                        Text(mapRegion.center.longitude.formatted(.number.precision(.fractionLength(2))))
-                    }                    .gridColumnAlignment(.trailing)
+                    Text("-123, 45")
+                        .font(.largeTitle)
+                    Text("-123,45678, 45.67890")
                     
-                    GridRow{
-                        Text("Span:")
-                        Text(mapRegion.span.latitudeDelta.formatted(.number.precision(.fractionLength(3))))
-                        Text(mapRegion.span.longitudeDelta.formatted(.number.precision(.fractionLength(3))))
-                    }                    .gridColumnAlignment(.trailing)
+                    Picker("Retrohash", selection: $retroHashMode) {
+                        Text("Current").tag(false)
+                        Text("Retrohash").tag(true)
+                    }
+                    .pickerStyle(.segmented)
+                    
+                    if (retroHashMode) {
+                        GridRow {
+                            Text("Date").gridColumnAlignment(.trailing)
+                            DatePicker(
+                                "Please enter a date",
+                                selection: $selectedRetroDay,
+                                displayedComponents: .date
+                            )
+                            .labelsHidden()
+                            .gridColumnAlignment(.leading).font(.title2)
+                        }
+                    } else { // regular, current dates mode
+                        GridRow {
+                            Text("Today").gridColumnAlignment(.trailing)
+                            Text(Date.now.formatted(date: .abbreviated, time:.omitted)).gridColumnAlignment(.leading).font(.title2)
+                        }
+                        
+                    } // end if retroHashMode
+                    
                     
                     Divider().gridCellUnsizedAxes(.horizontal)
-                    GridRow{
-                        Text("Tap Point:")
-                        Text(tapPoint.latitude.formatted(.number.precision(.fractionLength(2))))
-                        Text(tapPoint.longitude.formatted(.number.precision(.fractionLength(2))))
-                    }                    .gridColumnAlignment(.trailing)
-                    Text(tapText)
-                    Divider().gridCellUnsizedAxes(.horizontal)
-                    Text(hashDate, style: .date)
                     
-                }.padding(20)
+                    GridRow{
+                        Text("Distance").gridColumnAlignment(.trailing)
+                        Text("123 km").gridColumnAlignment(.leading).font(.title2)
+                    }
+                    
+                    GridRow{
+                        Text("Closest").gridColumnAlignment(.trailing)
+                        Text("12 m").gridColumnAlignment(.leading).font(.title2)
+                    }
+                    
+                    Divider().gridCellUnsizedAxes(.horizontal)
+                    
+                }//.padding(10)
                 
             }
             
-            .navigationBarTitleDisplayMode(.inline)
             .toolbar {
-                
-                ToolbarItem(placement: .topBarLeading) {
-                    
-                    Button(
-                        action: {
-                            hashDate = Calendar.current.date(
-                                byAdding: DateComponents(day: -1), to: hashDate
-                            ) ?? hashDate
-                        },
-                        label: {Image(systemName: "chevron.backward")}
-                    )
-                    
-                }
-                
-                ToolbarItem(placement: .principal) {
-                    
-                    DatePicker(
-                        "What date do you want to check?",
-                        selection: $hashDate,
-                        displayedComponents: .date
-                    ).labelsHidden()
-                    
-                }
-                
-                ToolbarItem(placement: .topBarTrailing) {
-                    
-                    Button(
-                        action: {
-                            hashDate = Calendar.current.date(
-                                byAdding: DateComponents(day: +1), to: hashDate
-                            ) ?? hashDate
-                        },
-                        label: {Image(systemName: "chevron.forward")}
-                    )
-
-                    
-                    
-                }
                 
                 ToolbarItemGroup(placement: .bottomBar) {
                     
@@ -133,56 +121,54 @@ struct ContentView: View {
                     },
                          label: {Image(systemName: "gearshape")}
                     )
-
-                    Spacer()
-                    Button(
-                        action: {tapText = "tapped a.square" },
-                        label: {Image(systemName: "a.square")}
-                    )
-                    Spacer()
-                    
-                    Button(
-                        action: {tapText = "tapped b.square" },
-                        label: {Image(systemName: "b.square")}
-                    )
                     
                     Spacer()
+                    
+                    
                     Button(
-                        action: {tapText = "tapped c.square" },
-                        label: {Image(systemName: "c.square")}
-                    ).disabled(/*@START_MENU_TOKEN@*/true/*@END_MENU_TOKEN@*/)
+                        action: {tapText = "tapped Location" },
+                        label: {
+                            Image(systemName: "location.fill").font(.largeTitle)
+                        }
+                    )
+                    
                     Spacer()
                     
                     Menu(content: {
                         
                         Button(
-                            action: {tapText = "tapped 1.square" },
+                            action: {tapText = "tapped doc.richtext" },
                             label: {
-                                Image(systemName: "1.square")
-                                Text("One")
+                                Image(systemName: "doc.richtext")
+                                Text("Poster")
                             }
                         )
                         
                         Button(
-                            action: {tapText = "tapped 2.square" },
+                            action: {tapText = "tapped newspaper" },
                             label: {
-                                Image(systemName: "2.square")
-                                Text("Two")
+                                Image(systemName: "newspaper")
+                                Text("Wiki Page")
                             }
                         )
                         
                         Button(
-                            action: {tapText = "tapped 3.square" },
+                            action: {tapText = "tapped map icon" },
                             label: {
-                                Image(systemName: "3.square")
-                                Text("Three")
+                                Image(systemName: "map")
+                                Text("Apple Maps")
+                            }
+                        )
+                        Button(
+                            action: {tapText = "tapped map icon" },
+                            label: {
+                                Image(systemName: "map")
+                                Text("Google Maps")
                             }
                         )
                         
-                    }, 
-                         label: {Image(systemName: "bell")}
-                    )
-
+                    },
+                         label:{Image(systemName: "square.and.arrow.up")})
                     
                 }
                 
