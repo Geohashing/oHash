@@ -7,19 +7,22 @@
     "-123,45678, 45.67890" : {
 
     },
-    "1 Jan 2000" : {
-
-    },
     "12 m" : {
 
     },
     "123 km" : {
 
     },
-    "Closest Distance:" : {
+    "Closest:" : {
 
     },
-    "Current Distance:" : {
+    "Current" : {
+
+    },
+    "Date:" : {
+
+    },
+    "Distance:" : {
 
     },
     "grat info" : {
@@ -36,7 +39,10 @@
     "One" : {
 
     },
-    "Please choose a color" : {
+    "Please enter a date" : {
+
+    },
+    "Retrohash" : {
 
     },
     "Three" : {
@@ -54,6 +60,9 @@
       }
     },
     "Two" : {
+
+    },
+    "Which Date" : {
 
     }
   },
