@@ -15,6 +15,12 @@
 		412507002B6F232F00055D7E /* oHashUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 412506FF2B6F232F00055D7E /* oHashUITests.swift */; };
 		412507022B6F232F00055D7E /* oHashUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 412507012B6F232F00055D7E /* oHashUITestsLaunchTests.swift */; };
 		4125070F2B6F355600055D7E /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 4125070E2B6F355600055D7E /* Localizable.xcstrings */; };
+		414E600C2BAAFC4C008BE322 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 412506E62B6F232E00055D7E /* ContentView.swift */; };
+		414E600D2BAAFC4C008BE322 /* oHashApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 412506E42B6F232E00055D7E /* oHashApp.swift */; };
+		414E600E2BAAFC4C008BE322 /* GridLines.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41976E562B83945200274871 /* GridLines.swift */; };
+		414E60112BAAFC4C008BE322 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 412506EB2B6F232F00055D7E /* Preview Assets.xcassets */; };
+		414E60122BAAFC4C008BE322 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 412506E82B6F232F00055D7E /* Assets.xcassets */; };
+		414E60132BAAFC4C008BE322 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 4125070E2B6F355600055D7E /* Localizable.xcstrings */; };
 		41976E572B83945200274871 /* GridLines.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41976E562B83945200274871 /* GridLines.swift */; };
 /* End PBXBuildFile section */
 
@@ -47,6 +53,8 @@
 		412506FF2B6F232F00055D7E /* oHashUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = oHashUITests.swift; sourceTree = "<group>"; };
 		412507012B6F232F00055D7E /* oHashUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = oHashUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		4125070E2B6F355600055D7E /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
+		414E60182BAAFC4C008BE322 /* oHashDev.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = oHashDev.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		414E60192BAAFC4C008BE322 /* InfoDev.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = InfoDev.plist; path = /Users/brendantwhite/code/oHash/InfoDev.plist; sourceTree = "<absolute>"; };
 		41976E562B83945200274871 /* GridLines.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridLines.swift; sourceTree = "<group>"; };
 		41CF931F2B8A073000CBF90B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -73,6 +81,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		414E600F2BAAFC4C008BE322 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -92,6 +107,7 @@
 				412506E12B6F232E00055D7E /* oHash.app */,
 				412506F12B6F232F00055D7E /* oHashTests.xctest */,
 				412506FB2B6F232F00055D7E /* oHashUITests.xctest */,
+				414E60182BAAFC4C008BE322 /* oHashDev.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -100,6 +116,7 @@
 			isa = PBXGroup;
 			children = (
 				41CF931F2B8A073000CBF90B /* Info.plist */,
+				414E60192BAAFC4C008BE322 /* InfoDev.plist */,
 				4192FFB22B7C221A002A6C3C /* Types */,
 				412506E42B6F232E00055D7E /* oHashApp.swift */,
 				412506E62B6F232E00055D7E /* ContentView.swift */,
@@ -200,6 +217,24 @@
 			productReference = 412506FB2B6F232F00055D7E /* oHashUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
+		414E600A2BAAFC4C008BE322 /* oHashDev */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 414E60152BAAFC4C008BE322 /* Build configuration list for PBXNativeTarget "oHashDev" */;
+			buildPhases = (
+				414E600B2BAAFC4C008BE322 /* Sources */,
+				414E600F2BAAFC4C008BE322 /* Frameworks */,
+				414E60102BAAFC4C008BE322 /* Resources */,
+				414E60142BAAFC4C008BE322 /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = oHashDev;
+			productName = oHash;
+			productReference = 414E60182BAAFC4C008BE322 /* oHashDev.app */;
+			productType = "com.apple.product-type.application";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -236,6 +271,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
+				414E600A2BAAFC4C008BE322 /* oHashDev */,
 				412506E02B6F232E00055D7E /* oHash */,
 				412506F02B6F232F00055D7E /* oHashTests */,
 				412506FA2B6F232F00055D7E /* oHashUITests */,
@@ -268,9 +304,37 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		414E60102BAAFC4C008BE322 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				414E60112BAAFC4C008BE322 /* Preview Assets.xcassets in Resources */,
+				414E60122BAAFC4C008BE322 /* Assets.xcassets in Resources */,
+				414E60132BAAFC4C008BE322 /* Localizable.xcstrings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		414E60142BAAFC4C008BE322 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 8;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\nagvtool next-version -all\n\nGIT=`xcrun -find git`\nGIT_REV=`${GIT} rev-parse --short HEAD`\n\n/usr/libexec/PlistBuddy -c \"Set :gitCommit ${GIT_REV}\" \"${SRCROOT}/InfoDev.plist\"\n/usr/libexec/PlistBuddy -c \"Set :gitCommit ${GIT_REV}\" \"${SRCROOT}/oHash/Info.plist\"\n";
+		};
 		41CF931B2B89FB7500CBF90B /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			alwaysOutOfDate = 1;
@@ -287,7 +351,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 1;
 			shellPath = /bin/sh;
-			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\nagvtool next-version -all\n";
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\nagvtool next-version -all\n\nGIT=`xcrun -find git`\nGIT_REV=`${GIT} rev-parse --short HEAD`\n\n/usr/libexec/PlistBuddy -c \"Set :gitCommit ${GIT_REV}\" \"${SRCROOT}/InfoDev.plist\"\n/usr/libexec/PlistBuddy -c \"Set :gitCommit ${GIT_REV}\" \"${SRCROOT}/oHash/Info.plist\"\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -316,6 +380,16 @@
 			files = (
 				412507022B6F232F00055D7E /* oHashUITestsLaunchTests.swift in Sources */,
 				412507002B6F232F00055D7E /* oHashUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		414E600B2BAAFC4C008BE322 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				414E600C2BAAFC4C008BE322 /* ContentView.swift in Sources */,
+				414E600D2BAAFC4C008BE322 /* oHashApp.swift in Sources */,
+				414E600E2BAAFC4C008BE322 /* GridLines.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -369,7 +443,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 21;
+				CURRENT_PROJECT_VERSION = 23;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
@@ -435,7 +509,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 21;
+				CURRENT_PROJECT_VERSION = 23;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -466,7 +540,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 21;
+				CURRENT_PROJECT_VERSION = 23;
 				DEVELOPMENT_ASSET_PATHS = "\"oHash/Preview Content\"";
 				DEVELOPMENT_TEAM = F9PCEYL854;
 				ENABLE_PREVIEWS = YES;
@@ -498,7 +572,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 21;
+				CURRENT_PROJECT_VERSION = 23;
 				DEVELOPMENT_ASSET_PATHS = "\"oHash/Preview Content\"";
 				DEVELOPMENT_TEAM = F9PCEYL854;
 				ENABLE_PREVIEWS = YES;
@@ -530,7 +604,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 21;
+				CURRENT_PROJECT_VERSION = 23;
 				DEVELOPMENT_TEAM = F9PCEYL854;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
@@ -550,7 +624,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 21;
+				CURRENT_PROJECT_VERSION = 23;
 				DEVELOPMENT_TEAM = F9PCEYL854;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
@@ -569,7 +643,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 21;
+				CURRENT_PROJECT_VERSION = 23;
 				GENERATE_INFOPLIST_FILE = YES;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = app.ohash.oHashUITests;
@@ -586,7 +660,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 21;
+				CURRENT_PROJECT_VERSION = 23;
 				GENERATE_INFOPLIST_FILE = YES;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = app.ohash.oHashUITests;
@@ -595,6 +669,70 @@
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = oHash;
+			};
+			name = Release;
+		};
+		414E60162BAAFC4C008BE322 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 23;
+				DEVELOPMENT_ASSET_PATHS = "\"oHash/Preview Content\"";
+				DEVELOPMENT_TEAM = F9PCEYL854;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = InfoDev.plist;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 14.4;
+				MARKETING_VERSION = 0.2;
+				PRODUCT_BUNDLE_IDENTIFIER = app.ohash.oHash;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		414E60172BAAFC4C008BE322 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 23;
+				DEVELOPMENT_ASSET_PATHS = "\"oHash/Preview Content\"";
+				DEVELOPMENT_TEAM = F9PCEYL854;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = InfoDev.plist;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 14.4;
+				MARKETING_VERSION = 0.2;
+				PRODUCT_BUNDLE_IDENTIFIER = app.ohash.oHash;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
@@ -633,6 +771,15 @@
 			buildConfigurations = (
 				4125070C2B6F232F00055D7E /* Debug */,
 				4125070D2B6F232F00055D7E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		414E60152BAAFC4C008BE322 /* Build configuration list for PBXNativeTarget "oHashDev" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				414E60162BAAFC4C008BE322 /* Debug */,
+				414E60172BAAFC4C008BE322 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

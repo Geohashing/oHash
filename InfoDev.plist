@@ -7,6 +7,6 @@
 	<key>gitCommit</key>
 	<string>bfcf52f</string>
 	<key>hashURL</key>
-	<string>http://geo.crox.net/djia/</string>
+	<string>http://localhost/oHash/test-djia/</string>
 </dict>
 </plist>
