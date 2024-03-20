@@ -98,7 +98,9 @@ struct ContentView: View {
                             action: {tapText = "tapped 1.circle" },
                             label: {
                                 Image(systemName: "1.circle")
-                                Text("One")
+                                Text(
+                                    (Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String) ?? "no app vers"
+                                )
                             }
                         )
                         
@@ -106,7 +108,9 @@ struct ContentView: View {
                             action: {tapText = "tapped 2.circle" },
                             label: {
                                 Image(systemName: "2.circle")
-                                Text("Two")
+                                Text(
+                                    (Bundle.main.object(forInfoDictionaryKey: "CFBundleVersion") as? String) ?? "no build no"
+                                )
                             }
                         )
                         
@@ -114,7 +118,18 @@ struct ContentView: View {
                             action: {tapText = "tapped 3.circle" },
                             label: {
                                 Image(systemName: "3.circle")
-                                Text("Three")
+                                Text(
+                                    (Bundle.main.object(forInfoDictionaryKey: "hashURL") as? String) ?? "no hash URL"
+                                )
+                            }
+                        )
+                        Button(
+                            action: {tapText = "tapped 4.circle" },
+                            label: {
+                                Image(systemName: "4.circle")
+                                Text(
+                                    (Bundle.main.object(forInfoDictionaryKey: "gitCommit") as? String) ?? "no hash URL"
+                                )
                             }
                         )
                         
