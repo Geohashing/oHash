@@ -6,7 +6,7 @@ Built with [MermaidJS](https://mermaid.js.org/)
 
 classDiagram 
 
-class oHashState~EnvironmentObject~{
+class HashState~EnvironmentObject~{
     selectedDate:HashDate
     displayDates:[HashDate]
     RetroHash:bool = false
@@ -16,43 +16,57 @@ class oHashState~EnvironmentObject~{
     getMapAnnotations()
 }
 
-class HashDate~Class~{
+class HashPoint{
     date:Date
-    e-30, w-30:HashFractions
+    graticule:Graticule
+    
+    status()
+    latitude()
+    longitude()
 }
-oHashState <-- HashDate
 
-class HashFractions~Struct~{
-    +hashDate:Date
+class HashDate~Struct~{
+    date:Date
+    e-30, w-30:DateFraction
+
+    hasOneOrMoreHashpoints()
+}
+
+class DateFraction~Struct~{
+    +date:Date
     +isE-30:boolean
     dowJonesDate:DowJonesDate
     latFraction:LatitudeDelta
     longFraction:LongitudeDelta
 
-    init(hashDate:Date, isE-30:boolean)
+    status()
 }
-HashDate <-- HashFractions
+HashPoint <-- DateFraction
+HashDate <-- DateFraction
+HashState <-- DateFraction
+HashState <-- HashDate
+HashState <-- HashPoint
 
 class DowJonesDate~Class~{
     date:Date
-    dowJonesState:DowJonesState
+    dowJonesStatus:DowJonesStatus
     dowJonesError:DowJonesError
+    lastCheckTime:Date
+    lastCheckInterval:Int
     dowJonesOpen:String
-    nextTry:Date
-    waitIntervalSeconds:Int
 
     static getDowJonesDateFor(date:Date)
 }
-HashFractions -- DowJonesDate
+DateFraction -- DowJonesDate
 
-class DowJonesState~enum~{
+class DowJonesStatus~enum~{
     already-had-it
     too-early
     getting-it-now
     just-got-it
     couldnt-get-it
 }
-DowJonesDate -- DowJonesState
+DowJonesDate -- DowJonesStatus
 
 class DowJonesError~enum~{
     no-error
@@ -74,6 +88,5 @@ class Graticule~Struct~{
     Point bottomRight()
     bool isE-30()
 }
-oHashState <-- Graticule
-
+HashPoint <-- Graticule
 ```
