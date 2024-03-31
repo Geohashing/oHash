@@ -119,7 +119,7 @@ struct ContentView: View {
                             label: {
                                 Image(systemName: "3.circle")
                                 Text(
-                                    (Bundle.main.object(forInfoDictionaryKey: "hashURL") as? String) ?? "no hash URL"
+                                    (Bundle.main.object(forInfoDictionaryKey: "baseDowJonesURL") as? String) ?? "no hash URL"
                                 )
                             }
                         )
