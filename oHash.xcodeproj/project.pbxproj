@@ -16,6 +16,8 @@
 		412507022B6F232F00055D7E /* oHashUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 412507012B6F232F00055D7E /* oHashUITestsLaunchTests.swift */; };
 		4125070F2B6F355600055D7E /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 4125070E2B6F355600055D7E /* Localizable.xcstrings */; };
 		41976E572B83945200274871 /* GridLines.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41976E562B83945200274871 /* GridLines.swift */; };
+		41A5DD742BBA05BE00AD6D12 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A5DD732BBA05BE00AD6D12 /* Logger.swift */; };
+		41A5DD772BBA05ED00AD6D12 /* DowJonesDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A5DD762BBA05ED00AD6D12 /* DowJonesDate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +50,8 @@
 		412507012B6F232F00055D7E /* oHashUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = oHashUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		4125070E2B6F355600055D7E /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		41976E562B83945200274871 /* GridLines.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridLines.swift; sourceTree = "<group>"; };
+		41A5DD732BBA05BE00AD6D12 /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
+		41A5DD762BBA05ED00AD6D12 /* DowJonesDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DowJonesDate.swift; sourceTree = "<group>"; };
 		41CF931F2B8A073000CBF90B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -99,6 +103,8 @@
 		412506E32B6F232E00055D7E /* oHash */ = {
 			isa = PBXGroup;
 			children = (
+				41A5DD722BBA059F00AD6D12 /* Toolbox */,
+				41A5DD752BBA05DD00AD6D12 /* Models */,
 				41CF931F2B8A073000CBF90B /* Info.plist */,
 				4192FFB22B7C221A002A6C3C /* Types */,
 				412506E42B6F232E00055D7E /* oHashApp.swift */,
@@ -141,6 +147,22 @@
 				41976E562B83945200274871 /* GridLines.swift */,
 			);
 			path = Types;
+			sourceTree = "<group>";
+		};
+		41A5DD722BBA059F00AD6D12 /* Toolbox */ = {
+			isa = PBXGroup;
+			children = (
+				41A5DD732BBA05BE00AD6D12 /* Logger.swift */,
+			);
+			path = Toolbox;
+			sourceTree = "<group>";
+		};
+		41A5DD752BBA05DD00AD6D12 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				41A5DD762BBA05ED00AD6D12 /* DowJonesDate.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -298,7 +320,9 @@
 			files = (
 				412506E72B6F232E00055D7E /* ContentView.swift in Sources */,
 				412506E52B6F232E00055D7E /* oHashApp.swift in Sources */,
+				41A5DD772BBA05ED00AD6D12 /* DowJonesDate.swift in Sources */,
 				41976E572B83945200274871 /* GridLines.swift in Sources */,
+				41A5DD742BBA05BE00AD6D12 /* Logger.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -369,7 +393,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 21;
+				CURRENT_PROJECT_VERSION = 23;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
@@ -435,7 +459,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 21;
+				CURRENT_PROJECT_VERSION = 23;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -466,7 +490,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 21;
+				CURRENT_PROJECT_VERSION = 23;
 				DEVELOPMENT_ASSET_PATHS = "\"oHash/Preview Content\"";
 				DEVELOPMENT_TEAM = F9PCEYL854;
 				ENABLE_PREVIEWS = YES;
@@ -498,7 +522,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 21;
+				CURRENT_PROJECT_VERSION = 23;
 				DEVELOPMENT_ASSET_PATHS = "\"oHash/Preview Content\"";
 				DEVELOPMENT_TEAM = F9PCEYL854;
 				ENABLE_PREVIEWS = YES;
@@ -530,7 +554,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 21;
+				CURRENT_PROJECT_VERSION = 23;
 				DEVELOPMENT_TEAM = F9PCEYL854;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
@@ -550,7 +574,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 21;
+				CURRENT_PROJECT_VERSION = 23;
 				DEVELOPMENT_TEAM = F9PCEYL854;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
@@ -569,7 +593,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 21;
+				CURRENT_PROJECT_VERSION = 23;
 				GENERATE_INFOPLIST_FILE = YES;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = app.ohash.oHashUITests;
@@ -586,7 +610,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 21;
+				CURRENT_PROJECT_VERSION = 23;
 				GENERATE_INFOPLIST_FILE = YES;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = app.ohash.oHashUITests;
