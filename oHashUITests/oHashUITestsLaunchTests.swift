@@ -6,7 +6,7 @@
 //
 
 import XCTest
-//
+
 //final class oHashUITestsLaunchTests: XCTestCase {
 //
 //    override class var runsForEachTargetApplicationUIConfiguration: Bool {
