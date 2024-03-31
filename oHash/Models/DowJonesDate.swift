@@ -17,6 +17,7 @@ class DowJonesDate {
         case bad_calculated_url_error
         case timeout_error
         case network_error(_ httpStatus:Int)
+        case urlsession_error
         case unknown_error
         case unexpected_404
         case bad_server_response(_ serverResponse:String)
@@ -105,12 +106,14 @@ class DowJonesDate {
         // First, get the base URL for the open score
         guard let baseDowJonesURL = (Bundle.main.object(forInfoDictionaryKey: "baseDowJonesURL") as? String) else {
             self.dowJonesStatus = .error(.no_base_url_error)
+            Logger.djopen.error("no_base_url_error")
             return self.dowJonesStatus
         }
         
         // Then, build the entire URL from the base URL plus the yyyy-mm-dd date string
         guard let url = URL(string: baseDowJonesURL + self.iso8601String) else {
             self.dowJonesStatus = .error(.bad_calculated_url_error)
+            Logger.djopen.error("bad_calculated_url_error")
             return self.dowJonesStatus
         }
 
@@ -118,7 +121,8 @@ class DowJonesDate {
 
         // Then, get the response from the server
         guard let (data, response) = try? await URLSession.shared.data(from: url) else {
-            self.dowJonesStatus = .error(.unknown_error)
+            self.dowJonesStatus = .error(.urlsession_error)
+            Logger.djopen.error("urlsession_error")
             return self.dowJonesStatus
         }
         
