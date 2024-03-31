@@ -309,7 +309,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 1;
 			shellPath = /bin/sh;
-			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\nagvtool next-version -all\n";
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n#agvtool next-version -all\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
