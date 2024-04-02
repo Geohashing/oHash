@@ -28,7 +28,7 @@ class OHashState {
 
     // Also can't store a Graticule directly in @AppStorage
     // so we'll store its key and again get/set a computed property
-    @AppStorage("selected-grat") var storedSelectedGraticule = Graticule.NO_GRATICULE_SELECTED
+    @AppStorage("selected-grat") var storedSelectedGraticule = Graticule.NO_GRATICULE_SELECTED  // TODO: is this the way to handle "no graticule"???
     var selectedGraticule: Graticule {
         set {storedSelectedGraticule = newValue.key}
         get {return Graticule(key: storedSelectedGraticule)}
