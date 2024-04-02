@@ -8,5 +8,14 @@
 import Foundation
 
 struct Graticule {
+    
+    public static let NO_GRATICULE_SELECTED = -1
+    
+    public let key:Int = 1234
+    
+    init(key:Int) {
+        
+    }
+    
     // TODO: Just a stub for now
 }
