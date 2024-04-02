@@ -1,8 +1,12 @@
 app_identifier("app.ohash.oHash") # The bundle identifier of your app
 apple_id("brendan@thespia.com") # Your Apple Developer Portal username
 
-itc_team_id("122563393") # App Store Connect Team ID
+itc_team_id("119086031") # App Store Connect Team ID
 team_id("F9PCEYL854") # Developer Portal Team ID
+
+# BW: This works because I've got these two lines in ~/.zshrc:
+# export FASTLANE_USER="my@email.com"
+# export FASTLANE_APPLE_APPLICATION_SPECIFIC_PASSWORD="abcd-efgh-ijkl-mnop"
 
 # For more information about the Appfile, see:
 #     https://docs.fastlane.tools/advanced/#appfile
