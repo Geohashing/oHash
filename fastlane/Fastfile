@@ -27,8 +27,7 @@ platform :ios do
     	message: "TestFlight Build #{lane_context[SharedValues::BUILD_NUMBER]}",
     )    
     add_git_tag(
-    	grouping: "",
-		prefix: "build_",
+    	tag: "build_#{lane_context[SharedValues::BUILD_NUMBER]}"
 	)
 
 	# http://docs.fastlane.tools/actions/capture_screenshots/#capture_screenshots
