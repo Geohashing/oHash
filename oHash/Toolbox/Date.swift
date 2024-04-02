@@ -9,7 +9,7 @@ import Foundation
 
 extension Date {
 
-    static public func dateFromString(_ s:String) -> Date {
+    static public func fromISO8601String(_ s:String) -> Date {
         try! Self.iso8601.parse(s)
     }
 
