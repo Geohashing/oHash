@@ -17,9 +17,25 @@ default_platform(:ios)
 
 platform :ios do
   desc "Push a new beta build to TestFlight"
-  lane :beta do
+  lane :testflight do
+
+  	# http://docs.fastlane.tools/actions/run_tests/#run_tests
+  	run_tests
+
     increment_build_number(xcodeproj: "oHash.xcodeproj")
+    
+    commit_version_bump(
+    	message: "TestFlight Build (#{lane_context[SharedValues::BUILD_NUMBER]})!"
+    	)    
+    add_git_tag(
+		grouping: "testflight-builds",
+		prefix: "build_",
+	)
+
+	# http://docs.fastlane.tools/actions/capture_screenshots/#capture_screenshots
+    
     build_app(scheme: "oHash")
     upload_to_testflight
+
   end
 end
