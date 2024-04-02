@@ -45,21 +45,14 @@ class DowJonesDate {
         default:
             return nil
         }
-    }
-    
-    static public func dateFromString(_ s:String) -> Date {
-        try! Self.iso8601.parse(s)
-    }
-    
-    private static let iso8601 = Date.ISO8601FormatStyle()
-        .year().month().day()
+    }    
     
     private var iso8601String: String {
-        self.date.formatted(Self.iso8601)
+        self.date.formatted(Date.iso8601)
     }
     
     convenience init(_ s:String) {
-        self.init(Self.dateFromString(s))
+        self.init(Date.dateFromString(s))
     }
     
     init(_ date: Date) {
