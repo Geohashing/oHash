@@ -17,6 +17,8 @@
 		4125070F2B6F355600055D7E /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 4125070E2B6F355600055D7E /* Localizable.xcstrings */; };
 		41976E572B83945200274871 /* GridLines.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41976E562B83945200274871 /* GridLines.swift */; };
 		41A28D322BBC1DF00043B8B7 /* OHashState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A28D312BBC1DF00043B8B7 /* OHashState.swift */; };
+		41A28D342BBC1EBC0043B8B7 /* HashDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A28D332BBC1EBC0043B8B7 /* HashDate.swift */; };
+		41A28D362BBC21900043B8B7 /* Graticule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A28D352BBC21900043B8B7 /* Graticule.swift */; };
 		41A5DD742BBA05BE00AD6D12 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A5DD732BBA05BE00AD6D12 /* Logger.swift */; };
 		41A5DD772BBA05ED00AD6D12 /* DowJonesDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A5DD762BBA05ED00AD6D12 /* DowJonesDate.swift */; };
 /* End PBXBuildFile section */
@@ -52,6 +54,8 @@
 		4125070E2B6F355600055D7E /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		41976E562B83945200274871 /* GridLines.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridLines.swift; sourceTree = "<group>"; };
 		41A28D312BBC1DF00043B8B7 /* OHashState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OHashState.swift; sourceTree = "<group>"; };
+		41A28D332BBC1EBC0043B8B7 /* HashDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HashDate.swift; sourceTree = "<group>"; };
+		41A28D352BBC21900043B8B7 /* Graticule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Graticule.swift; sourceTree = "<group>"; };
 		41A5DD732BBA05BE00AD6D12 /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
 		41A5DD762BBA05ED00AD6D12 /* DowJonesDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DowJonesDate.swift; sourceTree = "<group>"; };
 		41CF931F2B8A073000CBF90B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
@@ -163,6 +167,8 @@
 			isa = PBXGroup;
 			children = (
 				41A28D312BBC1DF00043B8B7 /* OHashState.swift */,
+				41A28D352BBC21900043B8B7 /* Graticule.swift */,
+				41A28D332BBC1EBC0043B8B7 /* HashDate.swift */,
 				41A5DD762BBA05ED00AD6D12 /* DowJonesDate.swift */,
 			);
 			path = Models;
@@ -323,10 +329,12 @@
 			files = (
 				412506E72B6F232E00055D7E /* ContentView.swift in Sources */,
 				412506E52B6F232E00055D7E /* oHashApp.swift in Sources */,
+				41A28D362BBC21900043B8B7 /* Graticule.swift in Sources */,
 				41A5DD772BBA05ED00AD6D12 /* DowJonesDate.swift in Sources */,
 				41976E572B83945200274871 /* GridLines.swift in Sources */,
 				41A5DD742BBA05BE00AD6D12 /* Logger.swift in Sources */,
 				41A28D322BBC1DF00043B8B7 /* OHashState.swift in Sources */,
+				41A28D342BBC1EBC0043B8B7 /* HashDate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
