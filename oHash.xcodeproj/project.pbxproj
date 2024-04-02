@@ -16,6 +16,7 @@
 		412507022B6F232F00055D7E /* oHashUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 412507012B6F232F00055D7E /* oHashUITestsLaunchTests.swift */; };
 		4125070F2B6F355600055D7E /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 4125070E2B6F355600055D7E /* Localizable.xcstrings */; };
 		41976E572B83945200274871 /* GridLines.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41976E562B83945200274871 /* GridLines.swift */; };
+		41A28D322BBC1DF00043B8B7 /* OHashState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A28D312BBC1DF00043B8B7 /* OHashState.swift */; };
 		41A5DD742BBA05BE00AD6D12 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A5DD732BBA05BE00AD6D12 /* Logger.swift */; };
 		41A5DD772BBA05ED00AD6D12 /* DowJonesDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A5DD762BBA05ED00AD6D12 /* DowJonesDate.swift */; };
 /* End PBXBuildFile section */
@@ -50,6 +51,7 @@
 		412507012B6F232F00055D7E /* oHashUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = oHashUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		4125070E2B6F355600055D7E /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		41976E562B83945200274871 /* GridLines.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridLines.swift; sourceTree = "<group>"; };
+		41A28D312BBC1DF00043B8B7 /* OHashState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OHashState.swift; sourceTree = "<group>"; };
 		41A5DD732BBA05BE00AD6D12 /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
 		41A5DD762BBA05ED00AD6D12 /* DowJonesDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DowJonesDate.swift; sourceTree = "<group>"; };
 		41CF931F2B8A073000CBF90B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
@@ -160,6 +162,7 @@
 		41A5DD752BBA05DD00AD6D12 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				41A28D312BBC1DF00043B8B7 /* OHashState.swift */,
 				41A5DD762BBA05ED00AD6D12 /* DowJonesDate.swift */,
 			);
 			path = Models;
@@ -323,6 +326,7 @@
 				41A5DD772BBA05ED00AD6D12 /* DowJonesDate.swift in Sources */,
 				41976E572B83945200274871 /* GridLines.swift in Sources */,
 				41A5DD742BBA05BE00AD6D12 /* Logger.swift in Sources */,
+				41A28D322BBC1DF00043B8B7 /* OHashState.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
