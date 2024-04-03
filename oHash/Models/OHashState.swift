@@ -12,6 +12,8 @@ import MapKit
 
 class OHashState {
     
+    var today:Date // generally set to Date.now, but can change for testing
+    
     var displayDates: [HashDate] = []
     
     // Can't (yet) store a Date directly in @AppStorage
@@ -39,15 +41,16 @@ class OHashState {
     var isCurrentlyGettingDJOpen:Bool = false
     var mapRegion: MKCoordinateRegion
     
-    init(){
+    init(today:Date = .now){
         mapRegion = MKCoordinateRegion() // TODO - get this from UserDefaults
+        self.today = today
     }
     
     public func selectedDate() -> Date {
         if retroHash {
-            return Date.now
+            return retroDate
         } else {
-            return Date.now
+            return today
         }
     }
     

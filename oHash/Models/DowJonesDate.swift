@@ -11,6 +11,8 @@ import OSLog
 
 class DowJonesDate {
     
+    var now:Date // generally set to Date.now, but can change for testing
+    
     public enum DowJonesError: Equatable {
         case before_djia_existed_error
         case no_base_url_error
@@ -55,10 +57,11 @@ class DowJonesDate {
         self.init(Date.fromISO8601String(s))
     }
     
-    init(_ date: Date) {
+    init(_ date: Date, now:Date = .now) {
         self.date = date
         dowJonesStatus = .not_yet_calculated
         Logger.djopen.info("creating DowJonesDate for date \(self.date.ISO8601Format())")
+        self.now = now
     }
     
     
@@ -79,7 +82,7 @@ class DowJonesDate {
         
         // Next, if it's before the DJ opening time for that date,
         // return status .too_early
-        if (Date.now < self.dowJonesOpenTime()) {
+        if (now < self.dowJonesOpenTime()) {
             self.dowJonesStatus = .too_early
             return self.dowJonesStatus
         }
