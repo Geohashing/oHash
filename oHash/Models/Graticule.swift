@@ -37,6 +37,10 @@ struct Graticule {
         return (y * Self.x_count) + x
     }
     
+    public var coords: [Int] {
+        return [x,y]
+    }
+    
     public static let NO_GRATICULE_SELECTED_KEY = -1    // TODO: is this the way to handle "no graticule"???
     
     
@@ -71,23 +75,13 @@ struct Graticule {
             
         )
     }
-        
-    init(p:MKMapPoint) {
+    
+    init(mapPoint:MKMapPoint) {
         self.init(
-            x: p.x == +180.0 ? 359 : Int( p.x + 180 ),
-            y: p.y ==  +90.0 ? 179 : Int( p.y +  90 )
+            x: mapPoint.x == +180.0 ? 359 : Int( mapPoint.x + 180 ),
+            y: mapPoint.y ==  +90.0 ? 179 : Int( mapPoint.y +  90 )
         )
     }
-    
-    public func region() -> MKCoordinateRegion {
-        return MKCoordinateRegion(MKMapRect(
-            // to build the MKMapRect, we need the x,y of the CENTRE of the graticule
-            x: leftedge() + 0.5,
-            y: topedge() + 0.5,
-            width: 1, height: 1
-        ))
-    }
-    
     
     public func topedge() -> Double {
         Double ( self.y - 90 )
