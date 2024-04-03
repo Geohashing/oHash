@@ -51,8 +51,24 @@ struct Graticule {
     
     init(key:Int) {
         self.init(
+            
+            // To get x from the key,
+            // divide it by 360
+            // and take the bit left over.
+            
+            // So if the key is 729, then
+            // we divide 729 by 360,
+            // and we get 2 times 360 (which is 720)
+            // with 9 left over.
+            
+            // So if the key is 729, then x is 9.
             x: key % Self.x_count,
+            
+            // To get Y from the key,
+            // divide the key by 360
+            // and throw away the remainder
             y: key / Self.x_count
+            
         )
     }
         
