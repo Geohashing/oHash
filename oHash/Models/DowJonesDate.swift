@@ -45,21 +45,14 @@ class DowJonesDate {
         default:
             return nil
         }
-    }
-    
-    static public func dateFromString(_ s:String) -> Date {
-        try! Self.iso8601.parse(s)
-    }
-    
-    private static let iso8601 = Date.ISO8601FormatStyle()
-        .year().month().day()
+    }    
     
     private var iso8601String: String {
-        self.date.formatted(Self.iso8601)
+        self.date.formatted(Date.iso8601)
     }
     
     convenience init(_ s:String) {
-        self.init(Self.dateFromString(s))
+        self.init(Date.fromISO8601String(s))
     }
     
     init(_ date: Date) {
@@ -212,4 +205,15 @@ class DowJonesDate {
         )
     )!
     
+    // the date from the XKCD cartoon https://xkcd.com/426/
+    public static let xkcd_cartoon_date = Calendar.current.date(
+        from:DateComponents(
+            year: 2005,
+            month:  05,
+            day:    26,
+            hour:   12,
+            minute: 00
+        )
+    )!
+
 }
