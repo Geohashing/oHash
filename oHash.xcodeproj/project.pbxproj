@@ -53,6 +53,7 @@
 		412506FF2B6F232F00055D7E /* oHashUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = oHashUITests.swift; sourceTree = "<group>"; };
 		412507012B6F232F00055D7E /* oHashUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = oHashUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		4125070E2B6F355600055D7E /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
+		4177CD042BBD471700DB8AA7 /* oHash.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = oHash.xctestplan; sourceTree = "<group>"; };
 		41976E562B83945200274871 /* GridLines.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridLines.swift; sourceTree = "<group>"; };
 		41A28D312BBC1DF00043B8B7 /* OHashState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OHashState.swift; sourceTree = "<group>"; };
 		41A28D332BBC1EBC0043B8B7 /* HashDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HashDate.swift; sourceTree = "<group>"; };
@@ -92,6 +93,7 @@
 			isa = PBXGroup;
 			children = (
 				412506E32B6F232E00055D7E /* oHash */,
+				4177CD042BBD471700DB8AA7 /* oHash.xctestplan */,
 				412506F42B6F232F00055D7E /* oHashTests */,
 				412506FE2B6F232F00055D7E /* oHashUITests */,
 				412506E22B6F232E00055D7E /* Products */,

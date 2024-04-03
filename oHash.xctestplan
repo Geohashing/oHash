@@ -1,0 +1,38 @@
+{
+  "configurations" : [
+    {
+      "id" : "35EF7FA4-5AA3-4CE0-8C5C-CC034A5E9CEA",
+      "name" : "Test Scheme Action",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "targetForVariableExpansion" : {
+      "containerPath" : "container:oHash.xcodeproj",
+      "identifier" : "412506E02B6F232E00055D7E",
+      "name" : "oHash"
+    }
+  },
+  "testTargets" : [
+    {
+      "parallelizable" : true,
+      "target" : {
+        "containerPath" : "container:oHash.xcodeproj",
+        "identifier" : "412506F02B6F232F00055D7E",
+        "name" : "oHashTests"
+      }
+    },
+    {
+      "enabled" : false,
+      "parallelizable" : true,
+      "target" : {
+        "containerPath" : "container:oHash.xcodeproj",
+        "identifier" : "412506FA2B6F232F00055D7E",
+        "name" : "oHashUITests"
+      }
+    }
+  ],
+  "version" : 1
+}
