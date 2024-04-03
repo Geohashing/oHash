@@ -37,6 +37,10 @@ struct Graticule {
         return (y * Self.x_count) + x
     }
     
+    public var coords: [Int] {
+        return [x,y]
+    }
+    
     public static let NO_GRATICULE_SELECTED_KEY = -1    // TODO: is this the way to handle "no graticule"???
     
     

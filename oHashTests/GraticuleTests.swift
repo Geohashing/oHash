@@ -6,6 +6,7 @@
 //
 
 import XCTest
+@testable import oHash
 
 final class GraticuleTests: XCTestCase {
 
@@ -17,12 +18,22 @@ final class GraticuleTests: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
 
-    func testCreate() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-        // Any test you write for XCTest can be annotated as throws and async.
-        // Mark your test throws to produce an unexpected failure when your test encounters an uncaught error.
-        // Mark your test async to allow awaiting for asynchronous code to complete. Check the results with assertions afterwards.
+    func testCreateFromKey() throws {
+
+        // the key should be (y*360) + x
+        XCTAssertEqual( Graticule(key:            0).key,           0, "key 0"           )
+        XCTAssertEqual( Graticule(key:          359).key,         359, "key 359"         )
+        XCTAssertEqual( Graticule(key: (180*360)-1 ).key, (180*360)-1, "key (180*360)-1" )
+        
+    }
+
+    func testCreateFromXY() throws {
+
+        XCTAssertEqual( Graticule(x:   0, y:   0).coords, [  0,  0], "xy [  0,  0]" )
+        XCTAssertEqual( Graticule(x:   0, y: 179).coords, [  0,179], "xy [  0,179]" )
+        XCTAssertEqual( Graticule(x: 359, y:   0).coords, [359,  0], "xy [359,  0]" )
+        XCTAssertEqual( Graticule(x: 359, y: 179).coords, [359,179], "xy [359,179]" )
+
     }
 
 }
