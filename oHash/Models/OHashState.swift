@@ -10,7 +10,7 @@ import SwiftUI
 import OSLog
 import MapKit
 
-class OHashState {
+class OHashState: ObservableObject {
     
     // We wil generally set self.today to be Date.now, but it can change for testing
     private var today:Date
@@ -19,7 +19,7 @@ class OHashState {
     @AppStorage("map-region") public var mapRegion = MKCoordinateRegion.init(MKMapRect.world)
     
     // Bool was always RawRepresentable.
-    @AppStorage("retro-hash") public var retroHash: Bool = false
+    @AppStorage("retro-hash-mode-flag") public var retroHashModeFlag: Bool = false
     
     // We extended the Date type to be RawRepresentable
     // We will default to the date of the original XKCD cartoon
@@ -29,7 +29,7 @@ class OHashState {
     @AppStorage("current-date") public var selectedCurrentDate = Date.now
     
     public var selectedDate:Date {
-        self.retroHash ? self.selectedRetroDate : self.selectedCurrentDate
+        self.retroHashModeFlag ? self.selectedRetroDate : self.selectedCurrentDate
     }
     
     // we made Graticule RawRepresentable
