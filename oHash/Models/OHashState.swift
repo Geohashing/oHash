@@ -12,53 +12,41 @@ import MapKit
 
 class OHashState {
     
-    // We wil generally set today to be Date.now, but it can change for testing
-    var today:Date
+    // We wil generally set self.today to be Date.now, but it can change for testing
+    private var today:Date
 
     // We can use MKCoordinateRegion with @AppStorage because we extended it to be RawRepresentable
-    @AppStorage("map-region") var mapRegion = MKCoordinateRegion.init(MKMapRect.world)
+    @AppStorage("map-region") public var mapRegion = MKCoordinateRegion.init(MKMapRect.world)
 
     // Bool was always RawRepresentable.
-    @AppStorage("retrohash") var retroHash: Bool = false
-
+    @AppStorage("retro-hash") public var retroHash: Bool = false
     
-    // Can't (yet) store a Date directly in @AppStorage
-    // So for now, we need to store the timeIntervalSinceReferenceDate
-    // and get/set a computed property
-    
+    // We extended the Date type to be RawRepresentable
     // We will default to the date of the original XKCD cartoon
-    @AppStorage("retrodate") var storedRetroDate = DowJonesDate.xkcd_cartoon_date
-        .timeIntervalSinceReferenceDate
-    var retroDate: Date {
-        set {storedRetroDate = newValue.timeIntervalSinceReferenceDate}
-        get {return Date(timeIntervalSinceReferenceDate: storedRetroDate)}
-    }
+    @AppStorage("retro-date") public var selectedRetroDate = DowJonesDate.xkcd_cartoon_date
     
-    // Also can't store a Graticule directly in @AppStorage
-    // so we'll store its key and again get/set a computed property
-    @AppStorage("selected-grat") var storedSelectedGraticule = Graticule.NO_GRATICULE_SELECTED_KEY
-    var selectedGraticule: Graticule? {
-        set { storedSelectedGraticule = newValue?.key ?? Graticule.NO_GRATICULE_SELECTED_KEY }
-        get {
-            storedSelectedGraticule == Graticule.NO_GRATICULE_SELECTED_KEY
-            ? nil
-            : Graticule(key: storedSelectedGraticule)
-        }
-    }
+    // Also need to store the selected "current" date
+    @AppStorage("current-date") public var selectedCurrentDate = Date.now
     
-    var isCurrentlyGettingDJOpen:Bool = false
+    public var selectedDate:Date {
+        self.retroHash ? self.selectedRetroDate : self.selectedCurrentDate
+    }
+        
+    // we made Graticule RawRepresentable
+    @AppStorage("selected-grat") public var selectedGraticule = Graticule(mapPoint: MKMapPoint(x:0,y:0))
+    
+    public var isCurrentlyGettingDJOpen:Bool = false
         
     init(today:Date = .now){
-        mapRegion = MKCoordinateRegion() // TODO - get this from UserDefaults
+        
         self.today = today
-    }
-    
-    public func selectedDate() -> Date {
-        if retroHash {
-            return retroDate
-        } else {
-            return today
+        
+        // If the stored "current" date is before today,
+        // then reset the stored "current" date to be today.
+        if ( self.selectedCurrentDate < self.today ) {
+            self.selectedCurrentDate = self.today
         }
+        
     }
     
 }
