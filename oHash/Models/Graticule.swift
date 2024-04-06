@@ -84,10 +84,17 @@ struct Graticule: RawRepresentable {
         )
     }
     
+    init(coords:CLLocationCoordinate2D) {
+        self.init(
+            x: coords.longitude == +180.0 ? 359 : Int( coords.longitude + 180 ),
+            y: coords.latitude  ==  +90.0 ? 179 : Int( 90 - coords.latitude )
+        )
+    }
+    
     init(mapPoint:MKMapPoint) {
         self.init(
             x: mapPoint.x == +180.0 ? 359 : Int( mapPoint.x + 180 ),
-            y: mapPoint.y ==  +90.0 ? 179 : Int( mapPoint.y +  90 )
+            y: mapPoint.y ==  -90.0 ? 179 : Int( 90 - mapPoint.y )
         )
     }
     
