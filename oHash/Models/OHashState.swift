@@ -14,10 +14,10 @@ class OHashState {
     
     // We wil generally set self.today to be Date.now, but it can change for testing
     private var today:Date
-
+    
     // We can use MKCoordinateRegion with @AppStorage because we extended it to be RawRepresentable
     @AppStorage("map-region") public var mapRegion = MKCoordinateRegion.init(MKMapRect.world)
-
+    
     // Bool was always RawRepresentable.
     @AppStorage("retro-hash") public var retroHash: Bool = false
     
@@ -31,12 +31,12 @@ class OHashState {
     public var selectedDate:Date {
         self.retroHash ? self.selectedRetroDate : self.selectedCurrentDate
     }
-        
+    
     // we made Graticule RawRepresentable
     @AppStorage("selected-grat") public var selectedGraticule = Graticule(mapPoint: MKMapPoint(x:0,y:0))
     
     public var isCurrentlyGettingDJOpen:Bool = false
-        
+    
     init(today:Date = .now){
         
         self.today = today

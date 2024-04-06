@@ -112,9 +112,9 @@ class DowJonesDate {
             Logger.djopen.error("bad_calculated_url_error")
             return self.dowJonesStatus
         }
-
+        
         Logger.djopen.info("Getting DJOpen from \(url)")
-
+        
         // Then, get the response from the server
         guard let (data, response) = try? await URLSession.shared.data(from: url) else {
             self.dowJonesStatus = .error(.urlsession_error)
@@ -137,9 +137,9 @@ class DowJonesDate {
             self.dowJonesStatus = .error(.network_error(httpResponse.statusCode))
         }
         Logger.djopen.info("HTTP status: \(httpResponse.statusCode)")
-
+        
         // TODO: Set the environment object flag to "we've got a new response"
-
+        
         return self.dowJonesStatus
         
     }
@@ -147,7 +147,7 @@ class DowJonesDate {
     private func statusFromData(_ data:Data) -> DowJonesStatus {
         let dataString = String(decoding: data, as: UTF8.self)
         Logger.djopen.info("data: \(dataString)")
-
+        
         // Check it's a number
         guard let dataDouble = Double(dataString) else {
             return .error(.bad_server_response(dataString))
@@ -160,17 +160,17 @@ class DowJonesDate {
         if dataDouble > Double.greatestFiniteMagnitude {
             return .error(.bad_server_response(dataString))
         }
-
+        
         // If we get to here, then the server has responded with a
         // reasonable looking String, which converts nicely to a nice number.
         // Let's call this a good Dow Jones Open value.
-
+        
         // Cache it in UserDefaults, in case we need it again later
         UserDefaults.standard.set(dataString, forKey: self.iso8601String)
         
         // Return this DJ Open value for use.
         return .just_got_it(dataString)
-
+        
     }
     
     private func dowJonesOpenTime() -> Date {
@@ -218,5 +218,5 @@ class DowJonesDate {
             minute: 00
         )
     )!
-
+    
 }
