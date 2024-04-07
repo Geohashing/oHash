@@ -22,15 +22,17 @@ struct ContentView: View {
             
             VStack {
                 MapReader { proxy in
-                    Map(interactionModes: [.pan, .zoom]){
+                    Map(
+                        initialPosition: MapCameraPosition.region(state.mapRegion),
+                        interactionModes: [.pan, .zoom, .rotate]
+                    ){
                         GridLines(region: state.mapRegion)
                     }
                     .onTapGesture {
                         position in
                         
-                        state.selectedGraticule = Graticule(coords:
-                                                                proxy.convert(position, from: .local) ??  CLLocationCoordinate2D.init()
-                        )
+                        state.selectedGraticule
+                                = Graticule(coords: proxy.convert(position, from: .local) ??  CLLocationCoordinate2D.init())
                         tapText = "map tap at \(state.selectedGraticule.x), \(state.selectedGraticule.y)"
                         //                        tapText = "map tap at \(tapPoint.longitude.formatted()), \(tapPoint.latitude.formatted())"
                     }
