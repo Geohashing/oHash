@@ -8,7 +8,7 @@
 import Foundation
 import MapKit
 
-struct Graticule {
+struct Graticule: RawRepresentable {
     
     // The x,y coordinates start
     // at 0,0 in the northwest corner
@@ -43,6 +43,14 @@ struct Graticule {
     
     public static let NO_GRATICULE_SELECTED_KEY = -1    // TODO: is this the way to handle "no graticule"???
     
+    // Getter & Setter to make the Graticule type RawRepresentable
+    public init?(rawValue: Int) {
+        self = Graticule(key: rawValue)
+    }
+    
+    public var rawValue: Int {
+        self.key
+    }
     
     init(x:Int, y:Int) {
         // To ensure x is in 0...359,
@@ -76,10 +84,17 @@ struct Graticule {
         )
     }
     
+    init(coords:CLLocationCoordinate2D) {
+        self.init(
+            x: coords.longitude == +180.0 ? 359 : Int( coords.longitude + 180 ),
+            y: coords.latitude  ==  +90.0 ? 179 : Int( 90 - coords.latitude )
+        )
+    }
+    
     init(mapPoint:MKMapPoint) {
         self.init(
             x: mapPoint.x == +180.0 ? 359 : Int( mapPoint.x + 180 ),
-            y: mapPoint.y ==  +90.0 ? 179 : Int( mapPoint.y +  90 )
+            y: mapPoint.y ==  -90.0 ? 179 : Int( 90 - mapPoint.y )
         )
     }
     

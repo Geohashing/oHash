@@ -10,15 +10,11 @@ import MapKit
 
 struct ContentView: View {
     
-    @State private var hashDate = Date.now
-    @State private var tapText = "no buttons tapped yet"
-    @State private var tapPoint = CLLocationCoordinate2D.init()
-    @State private var mapRegion = MKCoordinateRegion.init()
+    @StateObject var state = OHashState()
     
-    @State private var retroHashMode = false
+    // temporary vars:
+    @State private var tapText = "no buttons tapped yet"
     var currentDays = ["Today", "Tomorrow", "Monday"]
-    @State private var selectedCurrentDay = "Today"
-    @State private var selectedRetroDay = Date.now
     
     
     var body: some View {
@@ -26,16 +22,22 @@ struct ContentView: View {
             
             VStack {
                 MapReader { proxy in
-                    Map(interactionModes: [.pan, .zoom]){
-                        GridLines(region: mapRegion)
+                    Map(
+                        initialPosition: MapCameraPosition.region(state.mapRegion),
+                        interactionModes: [.pan, .zoom, .rotate]
+                    ){
+                        GridLines(region: state.mapRegion)
                     }
                     .onTapGesture {
                         position in
-                        tapText = "map tap"
-                        tapPoint = proxy.convert(position, from: .local) ??  CLLocationCoordinate2D.init()
+                        
+                        state.selectedGraticule
+                                = Graticule(coords: proxy.convert(position, from: .local) ??  CLLocationCoordinate2D.init())
+                        tapText = "map tap at \(state.selectedGraticule.x), \(state.selectedGraticule.y)"
+                        //                        tapText = "map tap at \(tapPoint.longitude.formatted()), \(tapPoint.latitude.formatted())"
                     }
                     .onMapCameraChange(frequency: .continuous) { mapCameraUpdateContext in
-                        mapRegion = mapCameraUpdateContext.region
+                        state.mapRegion = mapCameraUpdateContext.region
                     }
                 }
                 Grid{
@@ -44,18 +46,18 @@ struct ContentView: View {
                         .font(.largeTitle)
                     Text("-123,45678, 45.67890")
                     
-                    Picker("Retrohash", selection: $retroHashMode) {
+                    Picker("Retrohash", selection: state.$retroHashModeFlag) {
                         Text("Current").tag(false)
                         Text("Retrohash").tag(true)
                     }
                     .pickerStyle(.segmented)
                     
-                    if (retroHashMode) {
+                    if (state.retroHashModeFlag) {
                         GridRow {
                             Text("Date").gridColumnAlignment(.trailing)
                             DatePicker(
                                 "Please enter a date",
-                                selection: $selectedRetroDay,
+                                selection: state.$selectedRetroDate,
                                 displayedComponents: .date
                             )
                             .labelsHidden()
@@ -64,7 +66,7 @@ struct ContentView: View {
                     } else { // regular, current dates mode
                         GridRow {
                             Text("Today").gridColumnAlignment(.trailing)
-                            Text(Date.now.formatted(date: .abbreviated, time:.omitted)).gridColumnAlignment(.leading).font(.title2)
+                            Text(state.selectedCurrentDate.formatted(date: .abbreviated, time:.omitted)).gridColumnAlignment(.leading).font(.title2)
                         }
                         
                     } // end if retroHashMode
@@ -74,12 +76,14 @@ struct ContentView: View {
                     
                     GridRow{
                         Text("Distance").gridColumnAlignment(.trailing)
-                        Text("123 km").gridColumnAlignment(.leading).font(.title2)
+                        //                        Text("123 km").gridColumnAlignment(.leading).font(.title2)
+                        Text("x \(state.selectedGraticule.x)").gridColumnAlignment(.leading).font(.title2)
                     }
                     
                     GridRow{
                         Text("Closest").gridColumnAlignment(.trailing)
-                        Text("12 m").gridColumnAlignment(.leading).font(.title2)
+                        //                        Text("12 m").gridColumnAlignment(.leading).font(.title2)
+                        Text("y \(state.selectedGraticule.y)").gridColumnAlignment(.leading).font(.title2)
                     }
                     
                     Divider().gridCellUnsizedAxes(.horizontal)
@@ -123,12 +127,22 @@ struct ContentView: View {
                                 )
                             }
                         )
+                        
                         Button(
                             action: {tapText = "tapped 4.circle" },
                             label: {
                                 Image(systemName: "4.circle")
                                 Text(
                                     (Bundle.main.object(forInfoDictionaryKey: "gitCommit") as? String) ?? "no hash URL"
+                                )
+                            }
+                        )
+                        Button(
+                            action: {tapText = "tapped 5.circle" },
+                            label: {
+                                Image(systemName: "5.circle")
+                                Text(
+                                    tapText
                                 )
                             }
                         )
@@ -168,20 +182,27 @@ struct ContentView: View {
                         )
                         
                         Button(
-                            action: {tapText = "tapped map icon" },
+                            action: {tapText = "tapped apple map icon" },
                             label: {
                                 Image(systemName: "map")
                                 Text("Apple Maps")
                             }
                         )
                         Button(
-                            action: {tapText = "tapped map icon" },
+                            action: {tapText = "tapped google map icon" },
                             label: {
                                 Image(systemName: "map")
                                 Text("Google Maps")
                             }
                         )
-                        
+                        Button(
+                            action: {tapText = "tapped osm map icon" },
+                            label: {
+                                Image(systemName: "map")
+                                Text("Open Street Maps")
+                            }
+                        )
+
                     },
                          label:{Image(systemName: "square.and.arrow.up")})
                     
