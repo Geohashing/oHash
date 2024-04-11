@@ -21,6 +21,8 @@ class OHashState: ObservableObject {
     // Bool was always RawRepresentable.
     @AppStorage("retro-hash-mode-flag") public var retroHashModeFlag: Bool = false
     
+    @AppStorage("have-selected-a-grat") public var haveSelectedAGrat: Bool = false
+
     // We extended the Date type to be RawRepresentable
     // We will default to the date of the original XKCD cartoon
     @AppStorage("retro-date") public var selectedRetroDate = DowJonesDate.xkcd_cartoon_date
