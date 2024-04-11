@@ -10,6 +10,6 @@ import Foundation
 import OSLog
 extension Logger {
     private static let appIdentifier = Bundle.main.bundleIdentifier ?? ""
-    static let djopen = Logger(subsystem: appIdentifier, category: "djopen")
-    static let asdfasdf = Logger(subsystem: appIdentifier, category: "asdfasdf")
+    static let djopen    = Logger(subsystem: appIdentifier, category: "djopen"    )
+    static let graticule = Logger(subsystem: appIdentifier, category: "graticule" )
 }

@@ -32,9 +32,8 @@ struct ContentView: View {
                         position in
                         
                         state.selectedGraticule
-                                = Graticule(coords: proxy.convert(position, from: .local) ??  CLLocationCoordinate2D.init())
-                        tapText = "map tap at \(state.selectedGraticule.x), \(state.selectedGraticule.y)"
-                        //                        tapText = "map tap at \(tapPoint.longitude.formatted()), \(tapPoint.latitude.formatted())"
+                        = Graticule(coords: proxy.convert(position, from: .local) ??  CLLocationCoordinate2D.init())
+                        tapText = "map tap on \(state.selectedGraticule.latitude), \(state.selectedGraticule.longitude)"
                     }
                     .onMapCameraChange(frequency: .continuous) { mapCameraUpdateContext in
                         state.mapRegion = mapCameraUpdateContext.region
@@ -42,7 +41,7 @@ struct ContentView: View {
                 }
                 Grid{
                     
-                    Text("-123, 45")
+                    Text("\(state.selectedGraticule.latitude), \(state.selectedGraticule.longitude)")
                         .font(.largeTitle)
                     Text("-123,45678, 45.67890")
                     
@@ -76,14 +75,12 @@ struct ContentView: View {
                     
                     GridRow{
                         Text("Distance").gridColumnAlignment(.trailing)
-                        //                        Text("123 km").gridColumnAlignment(.leading).font(.title2)
-                        Text("x \(state.selectedGraticule.x)").gridColumnAlignment(.leading).font(.title2)
+                        Text("123 km").gridColumnAlignment(.leading).font(.title2)
                     }
                     
                     GridRow{
                         Text("Closest").gridColumnAlignment(.trailing)
-                        //                        Text("12 m").gridColumnAlignment(.leading).font(.title2)
-                        Text("y \(state.selectedGraticule.y)").gridColumnAlignment(.leading).font(.title2)
+                        Text("12 m").gridColumnAlignment(.leading).font(.title2)
                     }
                     
                     Divider().gridCellUnsizedAxes(.horizontal)
@@ -133,7 +130,7 @@ struct ContentView: View {
                             label: {
                                 Image(systemName: "4.circle")
                                 Text(
-                                    (Bundle.main.object(forInfoDictionaryKey: "gitCommit") as? String) ?? "no hash URL"
+                                    (Bundle.main.object(forInfoDictionaryKey: "gitCommit") as? String) ?? "no Git commit"
                                 )
                             }
                         )
@@ -202,7 +199,7 @@ struct ContentView: View {
                                 Text("Open Street Maps")
                             }
                         )
-
+                        
                     },
                          label:{Image(systemName: "square.and.arrow.up")})
                     

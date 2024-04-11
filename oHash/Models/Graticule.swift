@@ -7,25 +7,64 @@
 
 import Foundation
 import MapKit
+import OSLog
 
 struct Graticule: RawRepresentable {
     
-    // The x,y coordinates start
-    // at 0,0 in the northwest corner
+    // The internal x,y coordinates start
+    // at 0,0 in the southwest corner
     // of the standard Mercator projection,
-    // and go to 359,179 in the southeast.
+    // and go to 359,179 in the northeast.
     
-    var x:Int, y:Int
+    private var internal_x:Int, internal_y:Int
     
-    public static let x_count = 360
-    public static let min_x:Int = 0
-    public static let max_x:Int = x_count - 1
-    public static let x_range = min_x...max_x
+    public var coords: [Int] {
+        return [internal_x, internal_y]
+    }
     
-    public static let y_count = 180
-    public static let min_y:Int = 0
-    public static let max_y:Int = y_count - 1
-    public static let y_range = min_y...max_y
+    // Are we in the Eastern hemisphere or the Western?
+    public var isEast:Bool {
+        internal_x >= 180
+    }
+    public var isWest:Bool {
+        !isEast
+    }
+    
+    // Are we in the Northern hemisphere or the Southern?
+    public var isNorth:Bool {
+        internal_y >= 90
+    }
+    public var isSouth:Bool {
+        !isNorth
+    }
+    
+    // Publicly visible "Longitude" string
+    public var longitude:String {
+        if isEast {
+            String( internal_x - 180 )
+        } else {
+            "- " + String ( abs(internal_x - 179) )
+        }
+    }
+    
+    // Publicly visible "Latitude" string
+    public var latitude:String {
+        if ( isNorth ) {
+            String( internal_y - 90 )
+        } else {
+            "- " + String ( abs(internal_y - 89) )
+        }
+    }
+    
+    private static let x_count = 360
+    private static let min_x:Int = 0
+    private static let max_x:Int = x_count - 1
+    private static let x_range = min_x...max_x
+    
+    private static let y_count = 180
+    private static let min_y:Int = 0
+    private static let max_y:Int = y_count - 1
+    private static let y_range = min_y...max_y
     
     public var key:Int {
         // The key is an Int that uniquely identifies the Graticule.
@@ -34,31 +73,27 @@ struct Graticule: RawRepresentable {
         // If y=2, then the key is 720 + x, so 720 through 1079.
         // And so on. For any vaue of y, the key is (y*360) + x, so (y*360) through (y*360)+359.
         
-        return (y * Self.x_count) + x
+        return (internal_y * Self.x_count) + internal_x
     }
     
-    public var coords: [Int] {
-        return [x,y]
-    }
-    
-    public static let NO_GRATICULE_SELECTED_KEY = -1    // TODO: is this the way to handle "no graticule"???
-    
-    // Getter & Setter to make the Graticule type RawRepresentable
+    // rawValue getter & setter to make the Graticule type RawRepresentable
     public init?(rawValue: Int) {
         self = Graticule(key: rawValue)
     }
-    
     public var rawValue: Int {
         self.key
     }
     
-    init(x:Int, y:Int) {
+    init(internal_x:Int, internal_y:Int) {
+        
         // To ensure x is in 0...359,
         // we add 360 to it then take the remainder
         // when dividing by 360.
-        self.x = ( x + Self.x_count ) % Self.x_count
+        self.internal_x = ( internal_x + Self.x_count ) % Self.x_count
+        
         // Same with y in 0...179
-        self.y = ( y + Self.y_count ) % Self.y_count
+        self.internal_y = ( internal_y + Self.y_count ) % Self.y_count
+        
     }
     
     init(key:Int) {
@@ -74,62 +109,94 @@ struct Graticule: RawRepresentable {
             // with 9 left over.
             
             // So if the key is 729, then x is 9.
-            x: key % Self.x_count,
+            internal_x: key % Self.x_count,
             
             // To get Y from the key,
             // divide the key by 360
             // and throw away the remainder
-            y: key / Self.x_count
+            internal_y: key / Self.x_count
             
         )
     }
     
-    init(coords:CLLocationCoordinate2D) {
+    private init( doubleLongitude:Double, doubleLatitude:Double ) {
+        
+        // first, get internal_x from doubleLongitude
+        if ( doubleLongitude == -180 ) {
+            internal_x = 0
+        } else if ( doubleLongitude == +180 ) {
+            internal_x = 359
+        } else if ( doubleLongitude < 0.0 ) {
+            // we are West of the GMT meridian
+            internal_x = Int(doubleLongitude) + 179
+        } else {
+            // we are East of the GMT meridian
+            internal_x = Int(doubleLongitude) + 180
+        }
+        
+        // then, get internal_y from doubleLatitude
+        if ( doubleLatitude == -90 ) {
+            internal_y = 0
+        } else if ( doubleLatitude == +90 ) {
+            internal_y = 179
+        } else if ( doubleLatitude < 0.0 ) {
+            // we are South of the equator
+            internal_y = Int(doubleLatitude) + 89
+        } else {
+            // we are North of the equator
+            internal_y = Int(doubleLatitude) + 90
+        }
+    }
+    
+    public init(coords:CLLocationCoordinate2D) {
+        Logger.graticule.info("from CLLocationCoordinate2D lat \(coords.latitude) \(Int(coords.latitude)), long \(coords.longitude) \(Int(coords.longitude))")
         self.init(
-            x: coords.longitude == +180.0 ? 359 : Int( coords.longitude + 180 ),
-            y: coords.latitude  ==  +90.0 ? 179 : Int( 90 - coords.latitude )
+            doubleLongitude: Double(coords.longitude),
+            doubleLatitude: Double(coords.latitude)
         )
     }
     
-    init(mapPoint:MKMapPoint) {
+    public init(mapPoint:MKMapPoint) {
+        Logger.graticule.info("from MKMapPoint lat \(mapPoint.y), long \(mapPoint.x)")
         self.init(
-            x: mapPoint.x == +180.0 ? 359 : Int( mapPoint.x + 180 ),
-            y: mapPoint.y ==  -90.0 ? 179 : Int( 90 - mapPoint.y )
+            doubleLongitude: Double(mapPoint.x),
+            doubleLatitude: Double(mapPoint.y)
         )
     }
     
     public func topedge() -> Double {
-        Double ( self.y - 90 )
+        Double ( (self.internal_y+1) - 90 )
     }
     public func bottomedge() -> Double {
-        Double ( (self.y+1) - 90 )
+        Double ( self.internal_y - 90 )
     }
     public func leftedge() -> Double {
-        Double ( self.x - 180 )
+        Double ( self.internal_x - 180 )
     }
     public func rightedge() -> Double {
-        Double ( (self.x+1) - 180 )
+        Double ( (self.internal_x+1) - 180 )
     }
     
-    public func north() -> Graticule {
-        if y == Self.min_y {
-            self // can't go further north than here
-        } else {
-            Graticule(x:x, y:y-1)
-        }
-    }
-    public func south() -> Graticule {
-        if y == Self.max_y {
+    public func nextGratSouth() -> Graticule {
+        if internal_y == Self.min_y {
             self // can't go further south than here
         } else {
-            Graticule(x:x, y:y+1)
+            Graticule(internal_x:internal_x, internal_y:internal_y-1)
         }
     }
-    public func west() -> Graticule {
-        Graticule(x:x-1, y:y)
+    public func nextGratNorth() -> Graticule {
+        if internal_y == Self.max_y {
+            self // can't go further north than here
+        } else {
+            Graticule(internal_x:internal_x, internal_y:internal_y+1)
+        }
     }
-    public func east() -> Graticule {
-        Graticule(x:x+1, y:y)
+    public func nextGratWest() -> Graticule {
+        Graticule(internal_x:internal_x-1, internal_y:internal_y)
+    }
+    public func nextGratEast() -> Graticule {
+        Graticule(internal_x:internal_x+1, internal_y:internal_y)
     }
     
 }
+
