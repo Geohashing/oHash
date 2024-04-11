@@ -43,15 +43,30 @@ struct ContentView: View {
                 
                 Grid{
                     
+                    // Graticule Section
                     Text("\(state.selectedGraticule.latitude), \(state.selectedGraticule.longitude)")
                         .font(.largeTitle)
                     Text("-123,45678, 45.67890")
                     
                     Divider()
 
+                    // Distance Section
+                    GridRow{
+                        Text("Distance").gridColumnAlignment(.trailing)
+                        Text("123 km").gridColumnAlignment(.leading).font(.title2)
+                    }
+                    
+                    GridRow{
+                        Text("Closest").gridColumnAlignment(.trailing)
+                        Text("12 m").gridColumnAlignment(.leading).font(.title2)
+                    }
+                    
+                    Divider()
+
+                    // Date Section
                     Picker("Retrohash", selection: state.$retroHashModeFlag) {
-                        Text("Current").tag(false)
                         Text("Retrohash").tag(true)
+                        Text("Current").tag(false)
                     }
                     .pickerStyle(.segmented)
                     .fixedSize()
@@ -75,18 +90,6 @@ struct ContentView: View {
                         
                     } // end if retroHashMode
                     
-                    
-                    Divider()
-
-                    GridRow{
-                        Text("Distance").gridColumnAlignment(.trailing)
-                        Text("123 km").gridColumnAlignment(.leading).font(.title2)
-                    }
-                    
-                    GridRow{
-                        Text("Closest").gridColumnAlignment(.trailing)
-                        Text("12 m").gridColumnAlignment(.leading).font(.title2)
-                    }
                     
                     Divider()
 
