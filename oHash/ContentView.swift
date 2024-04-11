@@ -21,6 +21,7 @@ struct ContentView: View {
         NavigationStack {
             
             VStack {
+                
                 MapReader { proxy in
                     Map(
                         initialPosition: MapCameraPosition.region(state.mapRegion),
@@ -39,17 +40,21 @@ struct ContentView: View {
                         state.mapRegion = mapCameraUpdateContext.region
                     }
                 }
+                
                 Grid{
                     
                     Text("\(state.selectedGraticule.latitude), \(state.selectedGraticule.longitude)")
                         .font(.largeTitle)
                     Text("-123,45678, 45.67890")
                     
+                    Divider()
+
                     Picker("Retrohash", selection: state.$retroHashModeFlag) {
                         Text("Current").tag(false)
                         Text("Retrohash").tag(true)
                     }
                     .pickerStyle(.segmented)
+                    .fixedSize()
                     
                     if (state.retroHashModeFlag) {
                         GridRow {
@@ -71,8 +76,8 @@ struct ContentView: View {
                     } // end if retroHashMode
                     
                     
-                    Divider().gridCellUnsizedAxes(.horizontal)
-                    
+                    Divider()
+
                     GridRow{
                         Text("Distance").gridColumnAlignment(.trailing)
                         Text("123 km").gridColumnAlignment(.leading).font(.title2)
@@ -83,8 +88,8 @@ struct ContentView: View {
                         Text("12 m").gridColumnAlignment(.leading).font(.title2)
                     }
                     
-                    Divider().gridCellUnsizedAxes(.horizontal)
-                    
+                    Divider()
+
                 }//.padding(10)
                 
             }
