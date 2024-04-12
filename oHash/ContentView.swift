@@ -49,7 +49,7 @@ struct ContentView: View {
                     Text("-123,45678, 45.67890")
                     
                     Divider()
-
+                    
                     // Distance Section
                     GridRow{
                         Text("Distance").gridColumnAlignment(.trailing)
@@ -62,7 +62,7 @@ struct ContentView: View {
                     }
                     
                     Divider()
-
+                    
                     // Date Section
                     Picker("Retrohash", selection: state.$retroHashModeFlag) {
                         Text("Retrohash").tag(true)
@@ -92,128 +92,135 @@ struct ContentView: View {
                     
                     
                     Divider()
-
-                }//.padding(10)
-                
-            }
-            
-            .toolbar {
-                
-                ToolbarItemGroup(placement: .bottomBar) {
                     
-                    Menu(content: {
+                    HStack() {
                         
-                        Button(
-                            action: {tapText = "tapped 1.circle" },
-                            label: {
-                                Image(systemName: "1.circle")
-                                Text(
-                                    (Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String) ?? "no app vers"
-                                )
-                            }
+                        Menu(content: {
+                            
+                            Button(
+                                action: {tapText = "tapped 1.circle" },
+                                label: {
+                                    Image(systemName: "1.circle")
+                                    Text(
+                                        (Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String) ?? "no app vers"
+                                    )
+                                }
+                            )
+                            
+                            Button(
+                                action: {tapText = "tapped 2.circle" },
+                                label: {
+                                    Image(systemName: "2.circle")
+                                    Text(
+                                        (Bundle.main.object(forInfoDictionaryKey: "CFBundleVersion") as? String) ?? "no build no"
+                                    )
+                                }
+                            )
+                            
+                            Button(
+                                action: {tapText = "tapped 3.circle" },
+                                label: {
+                                    Image(systemName: "3.circle")
+                                    Text(
+                                        (Bundle.main.object(forInfoDictionaryKey: "baseDowJonesURL") as? String) ?? "no hash URL"
+                                    )
+                                }
+                            )
+                            
+                            Button(
+                                action: {tapText = "tapped 4.circle" },
+                                label: {
+                                    Image(systemName: "4.circle")
+                                    Text(
+                                        (Bundle.main.object(forInfoDictionaryKey: "gitCommit") as? String) ?? "no Git commit"
+                                    )
+                                }
+                            )
+                            
+                            Button(
+                                action: {tapText = "tapped 5.circle" },
+                                label: {
+                                    Image(systemName: "5.circle")
+                                    Text(
+                                        tapText
+                                    )
+                                }
+                            )
+                            
+                        },
+                             label: {Image(systemName: "gearshape")}
                         )
+                        .padding(.horizontal,30)
+                        
+                        
+                        Spacer()
+                        
                         
                         Button(
-                            action: {tapText = "tapped 2.circle" },
+                            action: {tapText = "tapped Location" },
                             label: {
-                                Image(systemName: "2.circle")
-                                Text(
-                                    (Bundle.main.object(forInfoDictionaryKey: "CFBundleVersion") as? String) ?? "no build no"
-                                )
-                            }
-                        )
-                        
-                        Button(
-                            action: {tapText = "tapped 3.circle" },
-                            label: {
-                                Image(systemName: "3.circle")
-                                Text(
-                                    (Bundle.main.object(forInfoDictionaryKey: "baseDowJonesURL") as? String) ?? "no hash URL"
-                                )
-                            }
-                        )
-                        
-                        Button(
-                            action: {tapText = "tapped 4.circle" },
-                            label: {
-                                Image(systemName: "4.circle")
-                                Text(
-                                    (Bundle.main.object(forInfoDictionaryKey: "gitCommit") as? String) ?? "no Git commit"
-                                )
-                            }
-                        )
-                        Button(
-                            action: {tapText = "tapped 5.circle" },
-                            label: {
-                                Image(systemName: "5.circle")
-                                Text(
-                                    tapText
-                                )
-                            }
-                        )
-                        
-                    },
-                         label: {Image(systemName: "gearshape")}
-                    )
-                    
-                    Spacer()
-                    
-                    
-                    Button(
-                        action: {tapText = "tapped Location" },
-                        label: {
-                            Image(systemName: "location.fill").font(.largeTitle)
-                        }
-                    )
-                    
-                    Spacer()
-                    
-                    Menu(content: {
-                        
-                        Button(
-                            action: {tapText = "tapped doc.richtext" },
-                            label: {
-                                Image(systemName: "doc.richtext")
-                                Text("Poster")
+                                Image(systemName: "location.fill").font(.largeTitle)
                             }
                         )
                         
-                        Button(
-                            action: {tapText = "tapped newspaper" },
-                            label: {
-                                Image(systemName: "newspaper")
-                                Text("Wiki Page")
-                            }
-                        )
+                        Spacer()
                         
-                        Button(
-                            action: {tapText = "tapped apple map icon" },
-                            label: {
-                                Image(systemName: "map")
-                                Text("Apple Maps")
-                            }
+                        Menu(content: {
+                            
+                            Button(
+                                action: {tapText = "tapped doc.richtext" },
+                                label: {
+                                    Image(systemName: "doc.richtext")
+                                    Text("Poster")
+                                }
+                            )
+                            
+                            Button(
+                                action: {tapText = "tapped newspaper" },
+                                label: {
+                                    Image(systemName: "newspaper")
+                                    Text("Wiki Page")
+                                }
+                            )
+                            
+                            Button(
+                                action: {tapText = "tapped apple map icon" },
+                                label: {
+                                    Image(systemName: "map")
+                                    Text("Apple Maps")
+                                }
+                            )
+                            Button(
+                                action: {tapText = "tapped google map icon" },
+                                label: {
+                                    Image(systemName: "map")
+                                    Text("Google Maps")
+                                }
+                            )
+                            Button(
+                                action: {tapText = "tapped osm map icon" },
+                                label: {
+                                    Image(systemName: "map")
+                                    Text("Open Street Maps")
+                                }
+                            )
+                            
+                        },
+                             label:{Image(systemName: "square.and.arrow.up")}
                         )
-                        Button(
-                            action: {tapText = "tapped google map icon" },
-                            label: {
-                                Image(systemName: "map")
-                                Text("Google Maps")
-                            }
-                        )
-                        Button(
-                            action: {tapText = "tapped osm map icon" },
-                            label: {
-                                Image(systemName: "map")
-                                Text("Open Street Maps")
-                            }
-                        )
+                        .padding(.horizontal,30)
                         
-                    },
-                         label:{Image(systemName: "square.and.arrow.up")})
+                        
+                    }
+                    .padding(.top,10)
                     
                 }
                 
             }
+            
+            //            .ignoresSafeArea()
+            //            .ignoresSafeArea(.all, edges: .bottom)
+            
         }
     }
     
