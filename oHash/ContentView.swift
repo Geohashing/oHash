@@ -14,7 +14,7 @@ struct ContentView: View {
     
     // temporary vars:
     @State private var tapText = "no buttons tapped yet"
-    var currentDays = ["Today", "Tomorrow", "Monday"]
+//    var currentDays = ["Today", "Tomorrow", "Monday"]
     
     
     var body: some View {
@@ -217,10 +217,7 @@ struct ContentView: View {
                 }
                 
             }
-            
-            //            .ignoresSafeArea()
-            //            .ignoresSafeArea(.all, edges: .bottom)
-            
+                        
         }
     }
     
