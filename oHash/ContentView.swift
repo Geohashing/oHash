@@ -7,222 +7,46 @@
 
 import SwiftUI
 import MapKit
+import OSLog
+
+import UIKit
 
 struct ContentView: View {
     
     @StateObject var state = OHashState()
     
-    // temporary vars:
-    @State private var tapText = "no buttons tapped yet"
-//    var currentDays = ["Today", "Tomorrow", "Monday"]
-    
+    @Environment(\.horizontalSizeClass) var horizontalSize
+    @Environment(\.verticalSizeClass) var verticalSize
     
     var body: some View {
-        NavigationStack {
-            
-            VStack {
-                
-                MapReader { proxy in
-                    Map(
-                        initialPosition: MapCameraPosition.region(state.mapRegion),
-                        interactionModes: [.pan, .zoom, .rotate]
-                    ){
-                        GridLines(region: state.mapRegion)
-                    }
-                    .onTapGesture {
-                        position in
-                        
-                        state.selectedGraticule
-                        = Graticule(coords: proxy.convert(position, from: .local) ??  CLLocationCoordinate2D.init())
-                        tapText = "map tap on \(state.selectedGraticule.latitude), \(state.selectedGraticule.longitude)"
-                    }
-                    .onMapCameraChange(frequency: .continuous) { mapCameraUpdateContext in
-                        state.mapRegion = mapCameraUpdateContext.region
-                    }
-                }
-                
-                Grid{
-                    
-                    // Graticule Section
-                    Text("\(state.selectedGraticule.latitude), \(state.selectedGraticule.longitude)")
-                        .font(.largeTitle)
-                    Text("-123,45678, 45.67890")
-                    
-                    Divider()
-                    
-                    // Distance Section
-                    GridRow{
-                        Text("Distance").gridColumnAlignment(.trailing)
-                        Text("123 km").gridColumnAlignment(.leading).font(.title2)
-                    }
-                    
-                    GridRow{
-                        Text("Closest").gridColumnAlignment(.trailing)
-                        Text("12 m").gridColumnAlignment(.leading).font(.title2)
-                    }
-                    
-                    Divider()
-                    
-                    // Date Section
-                    Picker("Retrohash", selection: state.$retroHashModeFlag) {
-                        Text("Retrohash").tag(true)
-                        Text("Current").tag(false)
-                    }
-                    .pickerStyle(.segmented)
-                    .fixedSize()
-                    
-                    if (state.retroHashModeFlag) {
-                        GridRow {
-                            Text("Date").gridColumnAlignment(.trailing)
-                            DatePicker(
-                                "Please enter a date",
-                                selection: state.$selectedRetroDate,
-                                displayedComponents: .date
-                            )
-                            .labelsHidden()
-                            .gridColumnAlignment(.leading).font(.title2)
-                        }
-                    } else { // regular, current dates mode
-                        GridRow {
-                            Text("Today").gridColumnAlignment(.trailing)
-                            Text(state.selectedCurrentDate.formatted(date: .abbreviated, time:.omitted)).gridColumnAlignment(.leading).font(.title2)
-                        }
-                        
-                    } // end if retroHashMode
-                    
-                    
-                    Divider()
-                    
-                    HStack() {
-                        
-                        Menu(content: {
-                            
-                            Button(
-                                action: {tapText = "tapped 1.circle" },
-                                label: {
-                                    Image(systemName: "1.circle")
-                                    Text(
-                                        (Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String) ?? "no app vers"
-                                    )
-                                }
-                            )
-                            
-                            Button(
-                                action: {tapText = "tapped 2.circle" },
-                                label: {
-                                    Image(systemName: "2.circle")
-                                    Text(
-                                        (Bundle.main.object(forInfoDictionaryKey: "CFBundleVersion") as? String) ?? "no build no"
-                                    )
-                                }
-                            )
-                            
-                            Button(
-                                action: {tapText = "tapped 3.circle" },
-                                label: {
-                                    Image(systemName: "3.circle")
-                                    Text(
-                                        (Bundle.main.object(forInfoDictionaryKey: "baseDowJonesURL") as? String) ?? "no hash URL"
-                                    )
-                                }
-                            )
-                            
-                            Button(
-                                action: {tapText = "tapped 4.circle" },
-                                label: {
-                                    Image(systemName: "4.circle")
-                                    Text(
-                                        (Bundle.main.object(forInfoDictionaryKey: "gitCommit") as? String) ?? "no Git commit"
-                                    )
-                                }
-                            )
-                            
-                            Button(
-                                action: {tapText = "tapped 5.circle" },
-                                label: {
-                                    Image(systemName: "5.circle")
-                                    Text(
-                                        tapText
-                                    )
-                                }
-                            )
-                            
-                        },
-                             label: {Image(systemName: "gearshape")}
-                        )
-                        .padding(.horizontal,30)
-                        
-                        
-                        Spacer()
-                        
-                        
-                        Button(
-                            action: {tapText = "tapped Location" },
-                            label: {
-                                Image(systemName: "location.fill").font(.largeTitle)
-                            }
-                        )
-                        
-                        Spacer()
-                        
-                        Menu(content: {
-                            
-                            Button(
-                                action: {tapText = "tapped doc.richtext" },
-                                label: {
-                                    Image(systemName: "doc.richtext")
-                                    Text("Poster")
-                                }
-                            )
-                            
-                            Button(
-                                action: {tapText = "tapped newspaper" },
-                                label: {
-                                    Image(systemName: "newspaper")
-                                    Text("Wiki Page")
-                                }
-                            )
-                            
-                            Button(
-                                action: {tapText = "tapped apple map icon" },
-                                label: {
-                                    Image(systemName: "map")
-                                    Text("Apple Maps")
-                                }
-                            )
-                            Button(
-                                action: {tapText = "tapped google map icon" },
-                                label: {
-                                    Image(systemName: "map")
-                                    Text("Google Maps")
-                                }
-                            )
-                            Button(
-                                action: {tapText = "tapped osm map icon" },
-                                label: {
-                                    Image(systemName: "map")
-                                    Text("Open Street Maps")
-                                }
-                            )
-                            
-                        },
-                             label:{Image(systemName: "square.and.arrow.up")}
-                        )
-                        .padding(.horizontal,30)
-                        
-                        
-                    }
-                    .padding(.top,10)
-                    
-                }
-                
+
+        if ( verticalSize == .compact) {
+            // Phone in Landscape mode
+            HStack {
+                OHashMap().environmentObject(state)
+                InfoGrid().environmentObject(state).fixedSize()
+
             }
-                        
         }
+        else if ( horizontalSize == .compact ) {
+            // Phone in Portrait mode
+            VStack {
+                OHashMap().environmentObject(state)
+                InfoGrid().environmentObject(state)
+            }
+        }
+        else {
+            // iPad or other larger device
+            ZStack(alignment: .bottomTrailing) {
+                OHashMap().environmentObject(state)
+                InfoGrid().environmentObject(state).fixedSize()
+            }
+        }
+                        
     }
     
 }
 
 #Preview {
-    ContentView().previewInterfaceOrientation(.portrait)
+    ContentView().previewInterfaceOrientation(.landscapeLeft)
 }
