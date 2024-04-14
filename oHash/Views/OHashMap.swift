@@ -23,8 +23,9 @@ struct OHashMap: View {
             .onTapGesture {
                 position in
                 
-                state.selectedGraticule
-                = Graticule(coords: proxy.convert(position, from: .local) ??  CLLocationCoordinate2D.init())
+                state.selectedGraticule = Graticule(
+                    coords: proxy.convert(position, from: .local) ??  CLLocationCoordinate2D.init()
+                )
                 state.tapText = "map tap on \(state.selectedGraticule.latitude), \(state.selectedGraticule.longitude)"
             }
             .onMapCameraChange(frequency: .continuous) { mapCameraUpdateContext in
