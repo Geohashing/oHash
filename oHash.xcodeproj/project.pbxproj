@@ -17,6 +17,7 @@
 		4125070F2B6F355600055D7E /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 4125070E2B6F355600055D7E /* Localizable.xcstrings */; };
 		4168EA232BCB4DBC00C77A90 /* OHashMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4168EA222BCB4DBC00C77A90 /* OHashMap.swift */; };
 		4168EA252BCB76C300C77A90 /* InfoGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4168EA242BCB76C300C77A90 /* InfoGrid.swift */; };
+		4168EA272BCBDD6500C77A90 /* HashPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4168EA262BCBDD6500C77A90 /* HashPoint.swift */; };
 		4177CD062BBD4E6B00DB8AA7 /* GraticuleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4177CD052BBD4E6B00DB8AA7 /* GraticuleTests.swift */; };
 		4177CD082BBD72A400DB8AA7 /* MKCoordinateRegion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4177CD072BBD72A400DB8AA7 /* MKCoordinateRegion.swift */; };
 		41976E572B83945200274871 /* GridLines.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41976E562B83945200274871 /* GridLines.swift */; };
@@ -59,6 +60,7 @@
 		4125070E2B6F355600055D7E /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		4168EA222BCB4DBC00C77A90 /* OHashMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OHashMap.swift; sourceTree = "<group>"; };
 		4168EA242BCB76C300C77A90 /* InfoGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoGrid.swift; sourceTree = "<group>"; };
+		4168EA262BCBDD6500C77A90 /* HashPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HashPoint.swift; sourceTree = "<group>"; };
 		4177CD042BBD471700DB8AA7 /* oHash.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = oHash.xctestplan; sourceTree = "<group>"; };
 		4177CD052BBD4E6B00DB8AA7 /* GraticuleTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraticuleTests.swift; sourceTree = "<group>"; };
 		4177CD072BBD72A400DB8AA7 /* MKCoordinateRegion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MKCoordinateRegion.swift; sourceTree = "<group>"; };
@@ -166,6 +168,7 @@
 				41976E562B83945200274871 /* GridLines.swift */,
 				4168EA222BCB4DBC00C77A90 /* OHashMap.swift */,
 				4168EA242BCB76C300C77A90 /* InfoGrid.swift */,
+				4168EA262BCBDD6500C77A90 /* HashPoint.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -348,6 +351,7 @@
 				412506E52B6F232E00055D7E /* oHashApp.swift in Sources */,
 				4168EA232BCB4DBC00C77A90 /* OHashMap.swift in Sources */,
 				41A28D362BBC21900043B8B7 /* Graticule.swift in Sources */,
+				4168EA272BCBDD6500C77A90 /* HashPoint.swift in Sources */,
 				41A5DD772BBA05ED00AD6D12 /* DowJonesDate.swift in Sources */,
 				41976E572B83945200274871 /* GridLines.swift in Sources */,
 				41A5DD742BBA05BE00AD6D12 /* Logger.swift in Sources */,
