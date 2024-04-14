@@ -43,7 +43,7 @@ struct Graticule: RawRepresentable {
         if isEast {
             String( internal_x - 180 )
         } else {
-            "- " + String ( abs(internal_x - 179) )
+            "-" + String ( abs(internal_x - 179) )
         }
     }
     
@@ -52,7 +52,7 @@ struct Graticule: RawRepresentable {
         if ( isNorth ) {
             String( internal_y - 90 )
         } else {
-            "- " + String ( abs(internal_y - 89) )
+            "-" + String ( abs(internal_y - 89) )
         }
     }
     

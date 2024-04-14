@@ -198,11 +198,11 @@ struct GridLines: MapContent {
             allGratLines
             EmptyMapContent.init() // TODO: Insert actual hashpoints here
             
-        case Self.MAX_DELTA_FOR_ONE_GRAT_LINES..<Self.MAX_DELTA_FOR_FIVE_GRAT_LINES:
-            everyFiveGratLines
-            
-        case Self.MAX_DELTA_FOR_FIVE_GRAT_LINES..<Self.MAX_DELTA_FOR_TEN_GRAT_LINES:
-            everyTenGratLines
+//        case Self.MAX_DELTA_FOR_ONE_GRAT_LINES..<Self.MAX_DELTA_FOR_FIVE_GRAT_LINES:
+//            everyFiveGratLines
+//            
+//        case Self.MAX_DELTA_FOR_FIVE_GRAT_LINES..<Self.MAX_DELTA_FOR_TEN_GRAT_LINES:
+//            everyTenGratLines
             
         default:
             EmptyMapContent.init()

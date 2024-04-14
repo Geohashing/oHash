@@ -12,6 +12,11 @@ import MapKit
 
 class OHashState: ObservableObject {
     
+    
+    // temporary vars:
+    @Published var tapText = "no buttons tapped yet"
+
+    
     // We wil generally set self.today to be Date.now, but it can change for testing
     private var today:Date
     
@@ -21,6 +26,8 @@ class OHashState: ObservableObject {
     // Bool was always RawRepresentable.
     @AppStorage("retro-hash-mode-flag") public var retroHashModeFlag: Bool = false
     
+    @AppStorage("have-selected-a-grat") public var haveSelectedAGrat: Bool = false
+
     // We extended the Date type to be RawRepresentable
     // We will default to the date of the original XKCD cartoon
     @AppStorage("retro-date") public var selectedRetroDate = DowJonesDate.xkcd_cartoon_date
@@ -35,7 +42,7 @@ class OHashState: ObservableObject {
     // we made Graticule RawRepresentable
     @AppStorage("selected-grat") public var selectedGraticule = Graticule(mapPoint: MKMapPoint(x:0,y:0))
     
-    public var isCurrentlyGettingDJOpen:Bool = false
+    @Published public var isCurrentlyGettingDJOpen:Bool = false
     
     init(today:Date = .now){
         
