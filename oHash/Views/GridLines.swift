@@ -11,14 +11,7 @@ import MapKit
 
 struct GridLines: MapContent {
     let region: MKCoordinateRegion
-    
-    var minDelta: Double {
-        Double.minimum(
-            region.span.latitudeDelta,
-            region.span.longitudeDelta
-        )
-    }
-    
+        
     func latitudeRange() -> Range<Double> {
         let northernLatitude = (Double(region.center.latitude) - Double(region.span.latitudeDelta))
         let southernLatitude = (Double(region.center.latitude) + Double(region.span.latitudeDelta))
