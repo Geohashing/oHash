@@ -183,13 +183,24 @@ struct GridLines: MapContent {
     @MapContentBuilder
     var body: some MapContent {
         
-        switch minDelta {
+        switch region.minDelta {
         case 0.0..<Self.MAX_DELTA_FOR_HASHPOINTS:
             allGratLines
+
+            // 34.839422, 134.694044 - Himeji Castle
+            Marker("Himeji", coordinate: CLLocationCoordinate2D(latitude: 34.839422, longitude: 134.694044))
+                .tint(.background)
             
+            // 34.982543, 135.750621 - Tōji
+            Marker("Tōji", coordinate: CLLocationCoordinate2D(latitude: 34.982543, longitude: 135.750621))
+                .tint(.foreground)
+            
+            // 34.665933, 135.431310 - USJ
+            Marker("USJ", coordinate: CLLocationCoordinate2D(latitude: 34.665933, longitude: 135.431310))
+                .tint(.accent)
+
         case Self.MAX_DELTA_FOR_HASHPOINTS..<Self.MAX_DELTA_FOR_ONE_GRAT_LINES:
             allGratLines
-            EmptyMapContent.init() // TODO: Insert actual hashpoints here
             
 //        case Self.MAX_DELTA_FOR_ONE_GRAT_LINES..<Self.MAX_DELTA_FOR_FIVE_GRAT_LINES:
 //            everyFiveGratLines
