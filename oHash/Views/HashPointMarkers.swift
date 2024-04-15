@@ -15,27 +15,44 @@ struct HashPointMarkers: MapContent {
     
     static let MAX_DELTA_FOR_HASHPOINTS      =  4.0
     
+    private func isSelected(_ graticule:Graticule) -> Bool {
+        //        (state.haveSelectedAGrat) && TODO: Put this back in, when we are reliably setting state.haveSelectedAGrat
+        (graticule.key == state.selectedGraticule.key)
+    }
+    
+    private func tintFor(_ hashpoint:HashPoint) -> some ShapeStyle {
+        
+        if ( Calendar.current.isDate(hashpoint.date, equalTo: state.selectedDate, toGranularity: .day) ){
+            
+            // This is the selected date. It needs to be .accent color (or .accentBackground).
+            return isSelected(hashpoint.graticule)
+            ? Color.accent
+            : Color.clear // or .accentBackground
+            
+        } else {
+            
+            // This is NOT the selected date. It should be regular .primary (or .background).
+            return isSelected(hashpoint.graticule)
+            ? Color(uiColor:.label)
+            : Color(uiColor:.systemBackground)
+            
+        }
+        
+    }
+    
     var body: some MapContent {
         
         switch region.minDelta {
             
         case 0.0..<Self.MAX_DELTA_FOR_HASHPOINTS:
             
-            // 34.839422, 134.694044 - Himeji Castle
-            Marker(".Himeji", coordinate: CLLocationCoordinate2D(latitude: 34.839422, longitude: 134.694044))
-                .tint(.background) // white in light mode, black in dark mode
-            
-            // 34.982543, 135.750621 - Tōji
-            Marker("Tōji", coordinate: CLLocationCoordinate2D(latitude: 34.982543, longitude: 135.750621))
-                .tint(.foreground)
-            
-            // 34.665933, 135.431310 - USJ
-            Marker("USJ", coordinate: CLLocationCoordinate2D(latitude: 34.665933, longitude: 135.431310))
-                .tint(.accent)
-            
-            // 35.160501, 136.207701 - Kampo
-            Marker("Kampo", coordinate: CLLocationCoordinate2D(latitude: 35.160501, longitude: 136.207701))
-                .tint(.accentBackground)
+            ForEach(HashPoint.forRegion(region)) { hashpoint in
+                Marker(
+                    hashpoint.date.ISO8601Format(Date.iso8601),
+                    coordinate: hashpoint.coordinate
+                )
+                .tint(tintFor(hashpoint))
+            }
             
         default: EmptyMapContent.init()
             
