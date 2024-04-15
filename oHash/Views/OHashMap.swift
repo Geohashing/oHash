@@ -19,6 +19,7 @@ struct OHashMap: View {
                 interactionModes: [.pan, .zoom, .rotate]
             ){
                 GridLines(region: state.mapRegion)
+                HashPointMarkers(region: state.mapRegion)
             }
             .onTapGesture {
                 position in
