@@ -29,7 +29,7 @@ struct OHashMap: View {
                 )
                 state.tapText = "map tap on \(state.selectedGraticule.latitude), \(state.selectedGraticule.longitude)"
             }
-            .onMapCameraChange(frequency: .continuous) { mapCameraUpdateContext in
+            .onMapCameraChange { mapCameraUpdateContext in
                 state.mapRegion = mapCameraUpdateContext.region
             }
         }
