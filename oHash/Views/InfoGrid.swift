@@ -122,7 +122,7 @@ struct InfoGrid: View {
                     )
                     
                 },
-                     label: {Image(systemName: "gearshape")}
+                     label: {Image(systemName: "line.3.horizontal")}
                 )
                 .padding(.horizontal,30)
                 
