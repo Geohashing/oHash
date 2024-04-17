@@ -4,9 +4,6 @@
     "-123,45678, 45.67890" : {
 
     },
-    ".Himeji" : {
-
-    },
     "%@, %@" : {
       "localizations" : {
         "en" : {
@@ -41,20 +38,6 @@
     "Google Maps" : {
 
     },
-    "grat info" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Graticule Info Section"
-          }
-        }
-      }
-    },
-    "Kampo" : {
-
-    },
     "Open Street Maps" : {
 
     },
@@ -67,24 +50,7 @@
     "Retrohash" : {
 
     },
-    "today" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Today"
-          }
-        }
-      }
-    },
     "Today" : {
-
-    },
-    "Tōji" : {
-
-    },
-    "USJ" : {
 
     },
     "Wiki Page" : {
