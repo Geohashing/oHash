@@ -7,7 +7,7 @@
 
 import Foundation
 import SwiftUI
-import OSLog
+//import OSLog
 import MapKit
 
 class OHashState: ObservableObject {
@@ -18,7 +18,7 @@ class OHashState: ObservableObject {
 
     
     // We wil generally set self.today to be Date.now, but it can change for testing
-    private var today:Date
+    private(set) public var today:Date
     
     // We can use MKCoordinateRegion with @AppStorage because we extended it to be RawRepresentable
     @AppStorage("map-region") public var mapRegion = MKCoordinateRegion.init(MKMapRect.world)

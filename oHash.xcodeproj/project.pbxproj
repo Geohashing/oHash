@@ -26,6 +26,8 @@
 		41A28D382BBC25880043B8B7 /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A28D372BBC25880043B8B7 /* Date.swift */; };
 		41A5DD742BBA05BE00AD6D12 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A5DD732BBA05BE00AD6D12 /* Logger.swift */; };
 		41A5DD772BBA05ED00AD6D12 /* DowJonesDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A5DD762BBA05ED00AD6D12 /* DowJonesDate.swift */; };
+		41B55FBD2BCD43400068FB04 /* HashPointMarkers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41B55FBC2BCD43400068FB04 /* HashPointMarkers.swift */; };
+		41B55FC12BCD50C20068FB04 /* HashPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41B55FC02BCD50C20068FB04 /* HashPoint.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -69,6 +71,8 @@
 		41A28D372BBC25880043B8B7 /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
 		41A5DD732BBA05BE00AD6D12 /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
 		41A5DD762BBA05ED00AD6D12 /* DowJonesDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DowJonesDate.swift; sourceTree = "<group>"; };
+		41B55FBC2BCD43400068FB04 /* HashPointMarkers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HashPointMarkers.swift; sourceTree = "<group>"; };
+		41B55FC02BCD50C20068FB04 /* HashPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HashPoint.swift; sourceTree = "<group>"; };
 		41CF931F2B8A073000CBF90B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -166,6 +170,7 @@
 				41976E562B83945200274871 /* GridLines.swift */,
 				4168EA222BCB4DBC00C77A90 /* OHashMap.swift */,
 				4168EA242BCB76C300C77A90 /* InfoGrid.swift */,
+				41B55FBC2BCD43400068FB04 /* HashPointMarkers.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -187,6 +192,7 @@
 				41A28D352BBC21900043B8B7 /* Graticule.swift */,
 				41A28D332BBC1EBC0043B8B7 /* HashDate.swift */,
 				41A5DD762BBA05ED00AD6D12 /* DowJonesDate.swift */,
+				41B55FC02BCD50C20068FB04 /* HashPoint.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -352,7 +358,9 @@
 				41976E572B83945200274871 /* GridLines.swift in Sources */,
 				41A5DD742BBA05BE00AD6D12 /* Logger.swift in Sources */,
 				41A28D322BBC1DF00043B8B7 /* OHashState.swift in Sources */,
+				41B55FC12BCD50C20068FB04 /* HashPoint.swift in Sources */,
 				4177CD082BBD72A400DB8AA7 /* MKCoordinateRegion.swift in Sources */,
+				41B55FBD2BCD43400068FB04 /* HashPointMarkers.swift in Sources */,
 				41A28D382BBC25880043B8B7 /* Date.swift in Sources */,
 				41A28D342BBC1EBC0043B8B7 /* HashDate.swift in Sources */,
 				4168EA252BCB76C300C77A90 /* InfoGrid.swift in Sources */,
@@ -427,7 +435,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 42;
+				CURRENT_PROJECT_VERSION = 46;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
@@ -446,7 +454,8 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "This will allow oHash to find the closest hashpoint, and tell you how far away it is";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MARKETING_VERSION = 0.2;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
@@ -493,7 +502,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 42;
+				CURRENT_PROJECT_VERSION = 46;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -506,7 +515,8 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "This will allow oHash to find the closest hashpoint, and tell you how far away it is";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MARKETING_VERSION = 0.2;
 				MTL_ENABLE_DEBUG_INFO = NO;
@@ -525,7 +535,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				BASE_DJ_URL = "http://ohash.test/test-djia/";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 42;
+				CURRENT_PROJECT_VERSION = 46;
 				DEVELOPMENT_ASSET_PATHS = "\"oHash/Preview Content\"";
 				DEVELOPMENT_TEAM = F9PCEYL854;
 				ENABLE_PREVIEWS = YES;
@@ -557,7 +567,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				BASE_DJ_URL = "http://geo.crox.net/djia/";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 42;
+				CURRENT_PROJECT_VERSION = 46;
 				DEVELOPMENT_ASSET_PATHS = "\"oHash/Preview Content\"";
 				DEVELOPMENT_TEAM = F9PCEYL854;
 				ENABLE_PREVIEWS = YES;
@@ -588,7 +598,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 42;
+				CURRENT_PROJECT_VERSION = 46;
 				DEVELOPMENT_TEAM = F9PCEYL854;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
@@ -608,7 +618,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 42;
+				CURRENT_PROJECT_VERSION = 46;
 				DEVELOPMENT_TEAM = F9PCEYL854;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
@@ -627,7 +637,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 42;
+				CURRENT_PROJECT_VERSION = 46;
 				DEVELOPMENT_TEAM = F9PCEYL854;
 				GENERATE_INFOPLIST_FILE = YES;
 				MARKETING_VERSION = 1.0;
@@ -645,7 +655,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 42;
+				CURRENT_PROJECT_VERSION = 46;
 				DEVELOPMENT_TEAM = F9PCEYL854;
 				GENERATE_INFOPLIST_FILE = YES;
 				MARKETING_VERSION = 1.0;

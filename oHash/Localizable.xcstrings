@@ -38,17 +38,6 @@
     "Google Maps" : {
 
     },
-    "grat info" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Graticule Info Section"
-          }
-        }
-      }
-    },
     "Open Street Maps" : {
 
     },
@@ -60,17 +49,6 @@
     },
     "Retrohash" : {
 
-    },
-    "today" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Today"
-          }
-        }
-      }
     },
     "Today" : {
 

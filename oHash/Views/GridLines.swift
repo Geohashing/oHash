@@ -11,14 +11,7 @@ import MapKit
 
 struct GridLines: MapContent {
     let region: MKCoordinateRegion
-    
-    var minDelta: Double {
-        Double.minimum(
-            region.span.latitudeDelta,
-            region.span.longitudeDelta
-        )
-    }
-    
+        
     func latitudeRange() -> Range<Double> {
         let northernLatitude = (Double(region.center.latitude) - Double(region.span.latitudeDelta))
         let southernLatitude = (Double(region.center.latitude) + Double(region.span.latitudeDelta))
@@ -182,7 +175,7 @@ struct GridLines: MapContent {
         
     } // end var everyFiveGratLines
     
-    static let MAX_DELTA_FOR_HASHPOINTS      =  4.0
+    
     static let MAX_DELTA_FOR_ONE_GRAT_LINES  = 12.0;
     static let MAX_DELTA_FOR_FIVE_GRAT_LINES = 25.0;
     static let MAX_DELTA_FOR_TEN_GRAT_LINES  = 50.0;
@@ -190,13 +183,9 @@ struct GridLines: MapContent {
     @MapContentBuilder
     var body: some MapContent {
         
-        switch minDelta {
-        case 0.0..<Self.MAX_DELTA_FOR_HASHPOINTS:
+        switch region.minDelta {
+        case 0.0..<Self.MAX_DELTA_FOR_ONE_GRAT_LINES:
             allGratLines
-            
-        case Self.MAX_DELTA_FOR_HASHPOINTS..<Self.MAX_DELTA_FOR_ONE_GRAT_LINES:
-            allGratLines
-            EmptyMapContent.init() // TODO: Insert actual hashpoints here
             
 //        case Self.MAX_DELTA_FOR_ONE_GRAT_LINES..<Self.MAX_DELTA_FOR_FIVE_GRAT_LINES:
 //            everyFiveGratLines

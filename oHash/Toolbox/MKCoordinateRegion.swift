@@ -8,10 +8,32 @@
 import Foundation
 import MapKit
 
-// Thanks to jnpdx for this code
-// https://stackoverflow.com/a/67215739/2434429
-
 extension MKCoordinateRegion : RawRepresentable {
+
+    var minDelta: Double {
+        Double.minimum(
+            self.span.latitudeDelta,
+            self.span.longitudeDelta
+        )
+    }
+
+    var bottomLeft:CLLocationCoordinate2D {
+        return CLLocationCoordinate2DMake(
+            self.center.latitude - (self.span.latitudeDelta / 2.0),
+            self.center.longitude - (self.span.longitudeDelta / 2.0)
+        )
+    }
+    
+    var topRight:CLLocationCoordinate2D {
+        return CLLocationCoordinate2DMake(
+            self.center.latitude + (self.span.latitudeDelta / 2.0),
+            self.center.longitude + (self.span.longitudeDelta / 2.0)
+        )
+    }
+    
+    // Thanks to jnpdx for the code below, to make the region RawRepresentable
+    // https://stackoverflow.com/a/67215739/2434429
+
     struct RepresentableForm : Codable {
         var centerLat : Double
         var centerLong : Double

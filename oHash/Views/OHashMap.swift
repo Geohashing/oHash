@@ -19,15 +19,17 @@ struct OHashMap: View {
                 interactionModes: [.pan, .zoom, .rotate]
             ){
                 GridLines(region: state.mapRegion)
+                HashPointMarkers(region: state.mapRegion)
             }
             .onTapGesture {
                 position in
                 
-                state.selectedGraticule
-                = Graticule(coords: proxy.convert(position, from: .local) ??  CLLocationCoordinate2D.init())
+                state.selectedGraticule = Graticule(
+                    coords: proxy.convert(position, from: .local) ??  CLLocationCoordinate2D.init()
+                )
                 state.tapText = "map tap on \(state.selectedGraticule.latitude), \(state.selectedGraticule.longitude)"
             }
-            .onMapCameraChange(frequency: .continuous) { mapCameraUpdateContext in
+            .onMapCameraChange { mapCameraUpdateContext in
                 state.mapRegion = mapCameraUpdateContext.region
             }
         }
