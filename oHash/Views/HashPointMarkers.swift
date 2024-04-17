@@ -24,17 +24,17 @@ struct HashPointMarkers: MapContent {
         
         if ( Calendar.current.isDate(hashpoint.date, equalTo: state.selectedDate, toGranularity: .day) ){
             
-            // This is the selected date. It needs to be .accent color (or .accentBackground if not selected).
+            // This is the selected date. Let's make it coloured.
             return isSelected(hashpoint.graticule)
             ? Color.accent
             : Color.accentBackground
             
         } else {
             
-            // This is NOT the selected date. It should be greyscale (or clear if not selected).
+            // This is NOT the selected date. It should be greyscale.
             return isSelected(hashpoint.graticule)
-            ? Color(uiColor:.label) // TODO: create "My Grey" (dark grey in Light Mode, pale grey in Dark)
-            : Color(.clear)
+            ? Color(.systemGray)
+            : Color(.systemGray6) // background gray, so pale gray (or dark gray in Dark Mode)
             
         }
         
