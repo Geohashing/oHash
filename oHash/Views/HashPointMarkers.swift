@@ -46,9 +46,9 @@ struct HashPointMarkers: MapContent {
             
         case 0.0..<Self.MAX_DELTA_FOR_HASHPOINTS:
             
-            ForEach(HashPoint.forRegion(region)) { hashpoint in
+            ForEach(HashPoint.getFor(region:region, date:state.selectedDate)) { hashpoint in
                 Marker(
-                    hashpoint.date.ISO8601Format(Date.iso8601),
+                    hashpoint.dateText,
                     coordinate: hashpoint.coordinate
                 )
                 .tint(tintFor(hashpoint))
