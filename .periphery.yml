@@ -1,0 +1,5 @@
+project: oHash.xcodeproj
+schemes:
+- oHash
+targets:
+- oHash
