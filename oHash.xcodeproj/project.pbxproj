@@ -63,6 +63,7 @@
 		41329F372C2C2E1F00C8C3D1 /* erd.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = erd.md; sourceTree = "<group>"; };
 		41329F382C2C2E1F00C8C3D1 /* iOS_versions.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = iOS_versions.md; sourceTree = "<group>"; };
 		41329F392C2C2E1F00C8C3D1 /* ux_plan_01.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = ux_plan_01.md; sourceTree = "<group>"; };
+		41329F3B2C2C354100C8C3D1 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		4168EA222BCB4DBC00C77A90 /* OHashMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OHashMap.swift; sourceTree = "<group>"; };
 		4168EA242BCB76C300C77A90 /* InfoGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoGrid.swift; sourceTree = "<group>"; };
 		4177CD042BBD471700DB8AA7 /* oHash.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = oHash.xctestplan; sourceTree = "<group>"; };
@@ -109,8 +110,9 @@
 			isa = PBXGroup;
 			children = (
 				412506E32B6F232E00055D7E /* oHash */,
-				4177CD042BBD471700DB8AA7 /* oHash.xctestplan */,
+				41329F3B2C2C354100C8C3D1 /* README.md */,
 				41329F3A2C2C2E1F00C8C3D1 /* docs */,
+				4177CD042BBD471700DB8AA7 /* oHash.xctestplan */,
 				412506F42B6F232F00055D7E /* oHashTests */,
 				412506FE2B6F232F00055D7E /* oHashUITests */,
 				412506E22B6F232E00055D7E /* Products */,
