@@ -1,4 +1,6 @@
 # UX Brainstorming
+This is version 1, which is outdated. 
+See [version 2](ux_plan_02.md) for a more recent version.
 
 ## Mockup Image
 

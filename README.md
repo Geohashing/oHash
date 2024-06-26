@@ -12,5 +12,5 @@ I've started putting together an
 [Entity Relationship Diagram](docs/erd.md).
 
 There's also my thoughts on eg
-[what the user experience should be](docs/ux_plan_01.md) and 
+[what the user experience should be](docs/ux_plan_02.md) and 
 [what versions of iOS should we support](docs/iOS_versions.md).
