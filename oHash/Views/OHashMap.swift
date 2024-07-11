@@ -38,5 +38,5 @@ struct OHashMap: View {
 }
 
 #Preview {
-    OHashMap()
+    ContentView().previewInterfaceOrientation(.landscapeLeft)
 }

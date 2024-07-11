@@ -6,46 +6,32 @@ See [version 1](ux_plan_01.md) for the previous version.
 
 ![Screen mockup with large Map section, and meduim sized Graticule Info section at the bottom](images/napkin-mockup-v01.png)
 
-## Map Section
+## On Startup
 
-### On Startup (if we have location permission)
+### If we have location permission
 
-- do this
-- do that
+- Calculate the closest hashpoint (may or may not be in same grat as user location)
+- Add that one hashpoint to the map
+- Also display user location on the map 
 
-### On Startup - First use (no location permission)
+### If we don't have location permission
 
-- do this
-- do that
+- Default to zoomed all the way out, centre on 0,0
 
-### On Startup - After first use (no location permission)
-
-- do this
-- do that
-
-### After Startup
-
-- do this
-- do that
 
 ## Map Display
 
-### If zoomed out to most of the planet
+### If zoomed out a bit (or a lot)
 
-- do this
-- do that
-
-### If zoomed in a little (but not much)
-
-- do this
-- do that
+- Message "Zoom in on the map, or use your location"
+- Don't display any hashpoints
 
 ### If zoomed in to just a handful of grats
 
-- do this
-- do that
+- Add all hashpoints in the viewable area to the map
 
-## Graticule Display on Map
+
+## Hashpoint Display on Map
 
 If we're zoomed in to just a handful of grats,
 then every graticule that is visible
@@ -70,32 +56,37 @@ Display an icon to suggest why we have no DJ Open, eg:
 - If it's after 9.30 and we've had an error, some error icon
 - etc
 
-## Graticule Info Section
+### Icon / SFSymbol
+
+- Today / Other Date
+- Selected Hashpoint / Unselected
+
+- Filled / Open
+- Larger / Regular size
+- Invert Colour?
+
+
+## Hashpoint Info Section
 
 ### If no grat is selected
 
-- do this
-- do that
+- asdfasdfasdf
 
 ### If a grat is selected and we do NOT have its DJ Open
 
-- do this
-- do that
+- asdfasdfasdf
 
 ### If a grat is selected and we DO have its DJ Open
 
-- do this
-- do that
+- asdfasdfasdf
 
 ### If a grat is selected and we DO have its DJ Open but NOT the current location
 
-- do this
-- do that
+- asdfasdfasdf
 
 ### If a grat is selected and we DO have its DJ Open and ALSO the current location
 
-- do this
-- do that
+- asdfasdfasdf
 
 ## Notifications
 

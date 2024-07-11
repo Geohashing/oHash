@@ -47,11 +47,18 @@ struct HashPointMarkers: MapContent {
         case 0.0..<Self.MAX_DELTA_FOR_HASHPOINTS:
             
             ForEach(HashPoint.getFor(region:region, date:state.selectedDate)) { hashpoint in
-                Marker(
-                    hashpoint.dateText,
-                    coordinate: hashpoint.coordinate
-                )
-                .tint(tintFor(hashpoint))
+                
+                
+                Annotation(hashpoint.dateText,
+                           coordinate: hashpoint.coordinate,
+                           anchor: .bottom) {
+                    Image(systemName: "drop.fill")
+                        .rotationEffect(.degrees(180))
+                        .imageScale(.large)
+                        .font(.largeTitle)
+                        .foregroundStyle(tintFor(hashpoint))
+                }
+                
             }
             
         default: EmptyMapContent.init()

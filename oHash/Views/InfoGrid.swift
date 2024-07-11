@@ -67,6 +67,16 @@ struct InfoGrid: View {
             
             Divider()
             
+            Picker("Mode", selection: state.$gratMode) {
+                Text("Global").tag(0)
+                Text("Regular").tag(1)
+                Text("Local").tag(2)
+            }
+            .pickerStyle(.segmented)
+            .fixedSize()
+
+            Divider()
+
             HStack() {
                 
                 Menu(content: {
@@ -196,5 +206,5 @@ struct InfoGrid: View {
 }
 
 #Preview {
-    InfoGrid()
+    ContentView().previewInterfaceOrientation(.landscapeLeft)
 }

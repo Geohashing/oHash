@@ -26,6 +26,8 @@ class OHashState: ObservableObject {
     // Bool was always RawRepresentable.
     @AppStorage("retro-hash-mode-flag") public var retroHashModeFlag: Bool = false
     
+    @AppStorage("grat-mode") public var gratMode: Int = 1
+    
     @AppStorage("have-selected-a-grat") public var haveSelectedAGrat: Bool = false
 
     // We extended the Date type to be RawRepresentable
