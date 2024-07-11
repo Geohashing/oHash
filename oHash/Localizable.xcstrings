@@ -35,7 +35,16 @@
     "Distance" : {
 
     },
+    "Global" : {
+
+    },
     "Google Maps" : {
+
+    },
+    "Local" : {
+
+    },
+    "Mode" : {
 
     },
     "Open Street Maps" : {
@@ -45,6 +54,9 @@
 
     },
     "Poster" : {
+
+    },
+    "Regular" : {
 
     },
     "Retrohash" : {
