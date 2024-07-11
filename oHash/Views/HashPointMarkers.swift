@@ -20,7 +20,7 @@ struct HashPointMarkers: MapContent {
         (graticule.key == state.selectedGraticule.key)
     }
     
-    private func tintFor(_ hashpoint:HashPoint) -> some ShapeStyle {
+    private func colorFor(_ hashpoint:HashPoint) -> Color {
         
         if ( Calendar.current.isDate(hashpoint.date, equalTo: state.selectedDate, toGranularity: .day) ){
             
@@ -56,7 +56,10 @@ struct HashPointMarkers: MapContent {
                         .rotationEffect(.degrees(180))
                         .imageScale(.large)
                         .font(.largeTitle)
-                        .foregroundStyle(tintFor(hashpoint))
+                        .foregroundStyle(
+                            .linearGradient(colors: [colorFor(hashpoint), .accentBackground], startPoint: .top, endPoint: .bottomTrailing)
+                        )
+                    
                 }
                 
             }
