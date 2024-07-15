@@ -52,9 +52,10 @@ struct HashPointMarkers: MapContent {
                 Annotation(hashpoint.dateText,
                            coordinate: hashpoint.coordinate,
                            anchor: .bottom) {
-                    Image(systemName: "drop.fill")
+                    Image(systemName: "drop")
+                        .symbolVariant(.fill) // .fill or .none
                         .rotationEffect(.degrees(180))
-                        .imageScale(.large)
+                        .imageScale(.small) // .small or .large
                         .font(.largeTitle)
                         .foregroundStyle(
                             .linearGradient(colors: [colorFor(hashpoint), .accentBackground], startPoint: .top, endPoint: .bottomTrailing)
