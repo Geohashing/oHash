@@ -35,33 +35,46 @@ struct InfoGrid: View {
             Divider()
             
             // Date Section - Date
-            if (state.retroHashModeFlag) {
-                GridRow {
-                    Text("Date").gridColumnAlignment(.trailing)
-                    DatePicker(
-                        "Please enter a date",
-                        selection: state.$selectedRetroDate,
-                        displayedComponents: .date
-                    )
-                    .labelsHidden()
-                    .gridColumnAlignment(.leading).font(.title2)
-                }
-            } else { // regular, current dates mode
-                GridRow {
-                    Text("Today").gridColumnAlignment(.trailing)
-                    Text(state.selectedCurrentDate.formatted(date: .abbreviated, time:.omitted)).gridColumnAlignment(.leading).font(.title2)
-                }
                 
-            } // end if retroHashMode
+//                    Text("Date").gridColumnAlignment(.trailing)
+
+            
+            Text("Today").font(.title2)
+            HStack {
+
+                Button(action: {}, label: {
+                    Image(systemName: "chevron.left")
+                        .padding(.all,20)
+                        //.background(.red)
+                })
+
+                DatePicker(
+                    "Please enter a date",
+                    selection: state.$selectedRetroDate,
+                    displayedComponents: .date
+                )
+                .labelsHidden()
+                .gridColumnAlignment(.leading)
+                .font(.title2)
+                
+                Button(action: {}, label: {
+                    Image(systemName: "chevron.right")
+                        .padding(.all,20)
+                        //.background(.red)
+                })
+
+
+            }
+//            .padding()
             
             
             // Date Section - Picker
-            Picker("Retrohash", selection: state.$retroHashModeFlag) {
-                Text("Retrohash").tag(true)
-                Text("Current").tag(false)
-            }
-            .pickerStyle(.segmented)
-            .fixedSize()
+//            Picker("Retrohash", selection: state.$retroHashModeFlag) {
+//                Text("Retrohash").tag(true)
+//                Text("Current").tag(false)
+//            }
+//            .pickerStyle(.segmented)
+//            .fixedSize()
             
             
             
@@ -134,7 +147,10 @@ struct InfoGrid: View {
                 },
                      label: {Image(systemName: "line.3.horizontal")}
                 )
-                .padding(.horizontal,30)
+                .padding(.all,20)
+                .padding(.leading,20)
+                
+                //.background(.red)
                 
                 
                 Spacer()
@@ -144,8 +160,13 @@ struct InfoGrid: View {
                     action: {state.tapText = "tapped Location" },
                     label: {
                         Image(systemName: "location.fill").font(.largeTitle)
+                            .padding(.all,20)
+                            //.background(.red)
+
                     }
                 )
+                
+
                 
                 Spacer()
                 
@@ -190,10 +211,15 @@ struct InfoGrid: View {
                     )
                     
                 },
-                     label:{Image(systemName: "square.and.arrow.up")}
+                     label:{
+                    Image(systemName: "square.and.arrow.up")
+                        .padding(.all,20)
+                        .padding(.trailing,20)
+                        //.background(.red)
+
+                }
                 )
-                .padding(.horizontal,30)
-                
+
                 
             }
             .padding(.top,10)
